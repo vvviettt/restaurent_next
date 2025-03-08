@@ -1,0 +1,28 @@
+{
+    "image": {
+       "url": "/img/menu/DSC_3464.jpg",
+       "alt": "cover"
+    },
+    "subtitle": "About us",
+    "title": "Giờ mở cửa",
+    "description": "Chúng tôi mở cửa tất cả các ngày trong tuần",
+    "button1": {
+        "link": "/menu",
+        "label": "Đặt chỗ"
+    },
+    "button2": {
+        "link": "/contact",
+        "label": "Liên hệ"
+    },
+    "items": [
+        {
+            "label": "Thứ 2 tới chủ nhật",
+            "from": {
+                "hours": "11:00"
+            },
+            "to": {
+                "hours": "1:00"
+            }
+        }
+    ]
+}

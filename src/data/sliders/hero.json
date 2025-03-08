@@ -1,0 +1,55 @@
+{
+    "items": [
+        {
+            "title": "Chào mừng đến với<br> Làng Chài",
+            "subtitle": "Hello, new friend!",
+            "image": {
+                "url": "/img/banners/ban-1.jpg",
+                "alt": "cover"
+            },
+            "text": "Hãy tạo nên khoảng thời gian đặc biệt tại Làng Chài với hải sản tươi ngon.",
+            "button1": {
+                "link": "/reservation",
+                "label": "Đặt trước"
+            },
+            "button2": {
+                "link": "/menu",
+                "label": ""
+            }
+        },
+        {
+            "title": "Hãy khám phá sự kiện <br> trong hôm nay!",
+            "subtitle": "Hello, new friend!",
+            "image": {
+                "url": "/img/banners/ban-2.jpg",
+                "alt": "cover"
+            },
+            "text": "'Lăng Chài' luôn nỗ lực cung cấp dịch vụ tốt hơn và lắng nghe ý kiến của khách hàng.",
+            "button1": {
+                "link": "/reservation-2",
+                "label": "Khám phá"
+            },
+            "button2": {
+                "link": "/shop",
+                "label": ""
+            }
+        },
+        {
+            "title": "Nhà hàng nằm <br>giữa trung tâm thành phố",
+            "subtitle": "Hello, new friend!",
+            "image": {
+                "url": "/img/banners/ban-3.jpg",
+                "alt": "cover"
+            },
+            "text": "Nổi tiếng với nhà hàng hải sản ngon gần bãi biển Mỹ Khê",
+            "button1": {
+                "link": "/contact",
+                "label": "Xem bản đồ"
+            },
+            "button2": {
+                "link": "/menu-2",
+                "label": ""
+            }
+        }
+    ]
+}

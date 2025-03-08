@@ -1,0 +1,170 @@
+{
+    "settings": {
+        "siteName": "Tastycs",
+        "siteDescription": "Cafe & Restaurant React Next.JS Template",
+        "bgImage": "/img/bg2.jpg",
+        "formspreeURL": "https://formspree.io/f/YOUR_FORM_ID",
+        "mailchimp": {
+            "url": "https://YOUR_MAILCHIMP_COMPANY.us21.list-manage.com/subscribe/post?u=YOUR_MAILCHIMP_FORM_UID&amp;id=YOUR_MAILCHIMP_FORM_ID&amp;f_id=YOUR_MAILCHIMP_FORM_FID",
+            "key": "YOUR_MAILCHIMP_KEY"
+        },
+        "mapbox": {
+            "AccessToken": "YOUR_MAPBOX_ACCESS_TOKEN_KEY",
+            "style": "mapbox://styles/mapbox/dark-v11",
+            "zoom": 15,
+            "long": -79.394900,
+            "lat": 43.643102
+        },
+        "openTable": {
+            "actionUrl": "//www.opentable.com/restaurant-search.aspx",
+            "restaurantID": "YOUR_OPENTABLE_RESTAURANT_ID",
+            "geoID": "15",
+            "lang": "en-US"
+        },
+        "perPage": 6
+    },
+    "header": {
+        "logo": {
+            "image": "/img/logo-no-background1.png",
+            "alt": "Logo"
+        },
+        "menu": [
+            {
+                "label": "Trang chủ",
+                "link": "/",
+                "children": []
+            },
+            
+            {
+                "label": "Menu",
+                "link": "/menu",
+                "children": [
+                    {
+                        "label": "Menu type 1",
+                        "link": "/menu"
+                    },
+                    {
+                        "label": "Menu type 2",
+                        "link": "/menu-2"
+                    }
+                ]
+            },
+            {},
+            {
+                "label": "Bài viết",
+                "link": "/blog",
+                "children": [
+                    {
+                        "label": "Blog list",
+                        "link": "/blog"
+                    },
+                    {
+                        "label": "Blog category",
+                        "link": "/blog/category/recipes"
+                    },
+                    {
+                        "label": "Publication",
+                        "link": "/blog/incredible-vegan-mac-and-cheese"
+                    }
+                ]
+            },
+            {
+                "label": "Đặt chỗ",
+                "link": "/reservation",
+                "children": [
+                    {
+                        "label": "Reservation (Form)",
+                        "link": "/reservation"
+                    },
+                    {
+                        "label": "Reservation (OpenTable API)",
+                        "link": "/reservation-2"
+                    }
+                ]
+            }
+        ],
+        "onepage": [
+            {
+                "label": "Home",
+                "link": "#home"
+            },
+            {
+                "label": "About",
+                "link": "#about"
+            },
+            {
+                "label": "Menu",
+                "link": "#menu"
+            },
+            {
+                "label": "Blog",
+                "link": "#blog"
+            },
+            {
+                "label": "Contact",
+                "link": "#contact"
+            }
+        ]
+    },
+    "footer": {
+        "logo": {
+            "url": "/img/logo-no-background1.png",
+            "alt": "Tastycs"
+        },
+        "about": {
+            "title": "",
+            "text": "",
+            "button": {
+                "link": "/menu",
+                "label": ""
+            }
+        },
+        "contact": {
+            "title": "",
+            "items": [
+                {
+                    "label": "Số điện thoại",
+                    "value": "+84 784875728"
+                },
+                {
+                    "label": "Email",
+                    "value": "your.email.inbox@here.com"
+                },
+                {
+                    "label": "Địa chỉ",
+                    "value": "10 Võ Văn KiệtAn Hải Bắc, Sơn Trà, Đà Nẵng"
+                }
+            ],
+            "button": {
+                "link": "/contact",
+                "label": ""
+            }
+        },
+        "gallery": {
+            "title": "",
+            "items": [],
+            "button": {
+                "link": "/history",
+                "label": ""
+            }
+        },
+        "copy": "© 2025"
+    },
+    "social": [
+        {
+            "link": "https://facebook.com",
+            "title": "Facebook",
+            "icon": "fab fa-facebook-f"
+        },
+        {
+            "link": "https://instagram.com",
+            "title": "Instagram",
+            "icon": "fab fa-instagram"
+        },
+        {
+            "link": "https://youtube.com",
+            "title": "Youtube",
+            "icon": "fab fa-youtube"
+        }
+    ]
+}

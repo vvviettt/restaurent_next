@@ -1,0 +1,22 @@
+{
+    "subtitle": "Đặc điểm",
+    "title": "Tại sao nên chọn chúng tôi?",
+    "description": "Khách hàng đến vì lòng tin và sự uy tín.",
+    "items": [
+        {
+            "icon": "/img/icons/1.svg",
+            "title": "Menu với đa dạng món ăn",
+            "text": "Chúng tôi có hơn 12 loại hải sản tươi sống" 
+        },
+        {
+            "icon": "/img/icons/2.svg",
+            "title": "Hải sản tươi sống",
+            "text": "Hải sản được nuôi tươi sống, nguồn gốc rõ ràng"
+        },
+        {
+            "icon": "/img/icons/3.svg",
+            "title": "Đầu bếp kinh nghiệm",
+            "text": "Đội ngũ đầu bếp với nhiều năm kinh nghiệm, uy tín."
+        }
+    ]
+}
