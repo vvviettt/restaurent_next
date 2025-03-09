@@ -1,10 +1,10 @@
 {
-    "video": {
-        "title": "Promo video",
-        "link": "https://www.youtube.com/watch?v=SXJqEnauNaY"
-    },
-    "image": {
-        "url": "/img/about.jpg",
-        "alt": "video cover"
-    }
+  "video": {
+    "title": "Promo video",
+    "link": "https://www.youtube.com/watch?v=2pk-cxj2sgw"
+  },
+  "image": {
+    "url": "/img/about.jpg",
+    "alt": "video cover"
+  }
 }

@@ -1,0 +1,56 @@
+.languageSwitcher {
+    position: relative;
+    display: inline-block;
+}
+
+.toggleButton {
+    background: transparent;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    outline: none !important;
+    text-align: center;
+    border: none;
+    color: white;
+    gap: 10px;
+
+    span {
+        font-size: 25px;
+        padding-top: 6px;
+    }
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: rgba(26, 47, 57, 0.7);
+    width: 50px;
+    padding: 8px 0;
+    list-style: none;
+    z-index: 10;
+    border-radius: 4px;
+}
+
+.dropdown li {
+    padding: 8px 12px;
+    cursor: pointer;
+
+}
+
+.link {
+    text-decoration: none;
+    justify-content: center;
+    color: black;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 25px;
+}
+
+.dropdown li:hover {
+    background: rgba(26, 47, 57, 0.9);
+}

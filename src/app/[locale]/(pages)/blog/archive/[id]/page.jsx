@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import dynamic from "next/dynamic";
-import { notFound } from 'next/navigation';
+import { notFound } from "next/navigation";
 
 import PageBanner from "@components/PageBanner";
 import Sidebar from "@components/Sidebar";
@@ -13,17 +13,19 @@ import { getArchivePosts, getFeaturedPostsData } from "@library/posts";
 
 import PopularsPostsData from "@data/sections/popular-posts.json";
 
-const BlogPaginated = dynamic( () => import("@components/blog/BlogPaginated"), { ssr: false } );
+const BlogPaginated = dynamic(() => import("@components/blog/BlogPaginated"), {
+  ssr: false,
+});
 
 export async function generateMetadata({ params }) {
   const archiveData = await getSingleArchiveData(params);
-  
+
   return {
-    title: archiveData.month+', '+archiveData.year + " | Archive | Blog",
-  }
+    title: archiveData.month + ", " + archiveData.year + " | Archive | Blog",
+  };
 }
 
-async function BlogArchive( { params } ) {
+async function BlogArchive({ params }) {
   const populars = await getAllPupulars();
   const posts = await getAllPosts(params);
   const archiveData = await getSingleArchiveData(params);
@@ -31,7 +33,13 @@ async function BlogArchive( { params } ) {
   return (
     <>
       <div id="tst-dynamic-banner" className="tst-dynamic-banner">
-        <PageBanner pageTitle={"Archive: "+archiveData.month+', '+archiveData.year} description={"Porro eveniet, autem ipsam corrupti consectetur cum. <br>Repudiandae dignissimos fugiat sit nam."} breadTitle={archiveData.month+', '+archiveData.year} />
+        <PageBanner
+          pageTitle={"Archive: " + archiveData.month + ", " + archiveData.year}
+          description={
+            "Porro eveniet, autem ipsam corrupti consectetur cum. <br>Repudiandae dignissimos fugiat sit nam."
+          }
+          breadTitle={archiveData.month + ", " + archiveData.year}
+        />
       </div>
       <div id="tst-dynamic-content" className="tst-dynamic-content">
         <div className="tst-content-frame">
@@ -40,21 +48,14 @@ async function BlogArchive( { params } ) {
               <ScrollHint />
 
               <div className="row">
-
                 <div className="col-lg-8">
-
-                  <BlogPaginated
-                    items={posts}
-                    columns={2}
-                  />
-
+                  <BlogPaginated items={posts} columns={2} />
                 </div>
                 <div className="col-lg-4">
                   <div className="tst-sidebar-frame tst-pad-type-1">
                     <Sidebar />
                   </div>
                 </div>
-                
               </div>
 
               <Divider onlyBottom={0} />
@@ -67,36 +68,36 @@ async function BlogArchive( { params } ) {
       </div>
     </>
   );
-};
+}
 export default BlogArchive;
 
-export async function _generateStaticParams() {
-    const paths = getAllArchivesIds()
-    return paths
-}
+// export async function _generateStaticParams() {
+//     const paths = getAllArchivesIds()
+//     return paths
+// }
 
 async function getAllPupulars() {
-    const popularsData = await getFeaturedPostsData( PopularsPostsData.featured )
-  
-    return popularsData
+  const popularsData = await getFeaturedPostsData(PopularsPostsData.featured);
+
+  return popularsData;
 }
 
 async function getSingleArchiveData(params) {
-    const archiveData = await getArchiveData(params.id)
+  const archiveData = await getArchiveData(params.id);
 
-    if ( !archiveData ) {
-        notFound()
-    } else {
-        return archiveData
-    }
+  if (!archiveData) {
+    notFound();
+  } else {
+    return archiveData;
+  }
 }
 
-async function getAllPosts( params ) {
-    const archivePosts = await getArchivePosts(params.id)
+async function getAllPosts(params) {
+  const archivePosts = await getArchivePosts(params.id);
 
-    if (!archivePosts.length) {
-        notFound()
-    }
+  if (!archivePosts.length) {
+    notFound();
+  }
 
-    return archivePosts
+  return archivePosts;
 }

@@ -16,15 +16,20 @@ import CallToActionSection from "@components/sections/CallToAction";
 import LatestPostsSection from "@components/sections/LatestPosts";
 import SubscribeSection from "@components/sections/Subscribe";
 
-const HeroSlider = dynamic( () => import("@components/sliders/Hero"), { ssr: false } );
-const TestimonialSlider = dynamic( () => import("@components/sliders/Testimonial"), { ssr: false } );
+const HeroSlider = dynamic(() => import("@components/sliders/Hero"), {
+  ssr: false,
+});
+const TestimonialSlider = dynamic(
+  () => import("@components/sliders/Testimonial"),
+  { ssr: false }
+);
 
 export const metadata = {
   title: {
-		default: "Home",
-	},
+    default: "Home",
+  },
   description: AppData.settings.siteDescription,
-}
+};
 
 async function Home() {
   const posts = await getAllPosts();
@@ -42,22 +47,22 @@ async function Home() {
               <AboutSection />
               <Divider />
               <FeaturesSection />
-              <Divider />
-              <ScheduleSection />
+
               <Divider onlyBottom={0} />
               <Suspense fallback={<div>Loading...</div>}>
                 <LatestPostsSection posts={posts} />
               </Suspense>
+              <Divider />
+              <ScheduleSection />
               {/* <CountersSection /> */}
             </div>
           </div>
         </div>
         {/* <CallToActionSection /> */}
-        
       </div>
     </>
   );
-};
+}
 export default Home;
 
 async function getAllPosts() {

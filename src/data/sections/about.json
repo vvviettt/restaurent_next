@@ -1,14 +1,14 @@
 {
-    "image": { 
-        "url": "/img/about.jpg",
-        "alt": "cover"
-    },
-    "video": "https://www.youtube.com/watch?v=SXJqEnauNaY",
-    "button": {
-        "link": "/about",
-        "label": "Tìm hiểu thêm"
-    },
-    "title": "Chúng tôi mời bạn đến <br>với nhà hàng chúng tôi",
-    "subtitle": "Về chúng tôi",
-    "description": "Nhà hàng Làng Chài được khai trương vào tháng 3 năm 2024 với mục tiêu mang đến cho khách hàng những món hải sản tươi ngon và đảm bảo vệ sinh. Dù chỉ trong một thời gian ngắn, nhờ sự tận tâm và nỗ lực không ngừng, chúng tôi đã trở thành một địa điểm nổi tiếng được nhiều người yêu thích. Nhà hàng luôn giữ sẵn hơn 12 loại hải sản sống như tôm hùm, tôm càng, cua, và chế biến ngay khi nhận được đơn hàng để đảm bảo độ tươi ngon tối ưu. Với mức giá hợp lý và hương vị tuyệt hảo, chúng tôi mỗi ngày đều nỗ lực hết mình để chào đón và phục vụ quý khách. "
+  "image": {
+    "url": "/img/about.jpg",
+    "alt": "cover"
+  },
+  "video": "https://www.youtube.com/watch?v=2pk-cxj2sgw",
+  "button": {
+    "link": "/about",
+    "label": "Tìm hiểu thêm"
+  },
+  "title": "Chúng tôi mời bạn đến <br>với nhà hàng chúng tôi",
+  "subtitle": "Về chúng tôi",
+  "description": "Nhà hàng Làng Chài được khai trương vào tháng 3 năm 2024 với mục tiêu mang đến cho khách hàng những món hải sản tươi ngon và đảm bảo vệ sinh. Dù chỉ trong một thời gian ngắn, nhờ sự tận tâm và nỗ lực không ngừng, chúng tôi đã trở thành một địa điểm nổi tiếng được nhiều người yêu thích. Nhà hàng luôn giữ sẵn hơn 12 loại hải sản sống như tôm hùm, tôm càng, cua, và chế biến ngay khi nhận được đơn hàng để đảm bảo độ tươi ngon tối ưu. Với mức giá hợp lý và hương vị tuyệt hảo, chúng tôi mỗi ngày đều nỗ lực hết mình để chào đón và phục vụ quý khách. "
 }
