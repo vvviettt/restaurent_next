@@ -16,7 +16,7 @@ const AboutSection = () => {
     <>
       {/* about */}
       <div className="row align-items-center flex-sm-row-reverse" id="about">
-        <div className="col-lg-6">
+        <div className="col-lg-7">
           {/* about text */}
           <div className="tst-mb-60">
             <div
@@ -53,7 +53,7 @@ const AboutSection = () => {
           {/* about text end */}
         </div>
 
-        <div className="col-lg-6">
+        <div className="col-lg-5">
           {/* about video */}
           <div className="tst-about-cover tst-mb-60">
             <img
