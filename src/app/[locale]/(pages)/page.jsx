@@ -59,7 +59,7 @@ async function Home() {
                           alt="Món ăn"
                         />
                       </div>
-                      <div className="mt-4">
+                      <div className="my-4">
                         <h5>SOUP TÔM THÁI</h5>
                       </div>
                     </div>
@@ -73,7 +73,7 @@ async function Home() {
                           alt="Món ăn"
                         />
                       </div>
-                      <div className="mt-4">
+                      <div className="my-4">
                         <h5>SOUP LẨU HẢI SẢN THẬP CẨM</h5>
                       </div>
                     </div>
@@ -87,7 +87,7 @@ async function Home() {
                           alt="Món ăn"
                         />
                       </div>
-                      <div className="mt-4">
+                      <div className="my-4">
                         <h5>SALAD RONG NHO CÁ NGỪ</h5>
                       </div>
                     </div>
@@ -101,7 +101,7 @@ async function Home() {
                           alt="Món ăn"
                         />
                       </div>
-                      <div className="mt-4">
+                      <div className="my-4">
                         <h5>RƯỢU VANG CHILE 1865</h5>
                       </div>
                     </div>
