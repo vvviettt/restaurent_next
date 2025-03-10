@@ -13,7 +13,7 @@ const FeaturesOneSection = () => {
               dangerouslySetInnerHTML={{ __html: Data.subtitle }}
             />
             <h3
-              className="tst-mb-30"
+              className="tst-mb-30 text-danger"
               dangerouslySetInnerHTML={{ __html: Data.title }}
             />
             <p
