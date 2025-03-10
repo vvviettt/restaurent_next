@@ -50,15 +50,16 @@ async function Home() {
               <div class="container text-center my-5">
                 {/* <h3 class="text-danger fw-bold mb-5">Menu</h3> */}
                 <div className="text-center">
-            <h3
-              className="tst-suptitle tst-suptitle-center tst-mb-15">Menu</h3>
-            <h3
-              className="tst-mb-30 text-danger">Đa dạng các loại hải sản
-            </h3>
-            <p
-              className="tst-text tst-mb-60">100% tươi sống, sạch sẽ</p>
-          </div>
-                <div class="row g-4">
+                  <h3
+                    className="tst-suptitle tst-suptitle-center tst-mb-15">Menu</h3>
+                  <h3
+                    className="tst-mb-30 text-danger">Đa dạng các loại hải sản
+                  </h3>
+                  <p
+                    className="tst-text tst-mb-60">100% tươi sống, sạch sẽ</p>
+                </div>
+
+                <div className="row tst-feature-box pt-4">
                   <a class="col-12 col-md-4 col-lg-3" href="<%= food.blogUrl %>">
                     <div class="menu-item">
                       <div class="menu-item--image">

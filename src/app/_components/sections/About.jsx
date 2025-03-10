@@ -16,7 +16,7 @@ const AboutSection = () => {
     <>
       {/* about */}
       <div className="row align-items-center flex-sm-row-reverse" id="about">
-        <div className="col-lg-7">
+        <div className="col-lg-6">
           {/* about text */}
           <div className="tst-mb-60">
             <div
@@ -53,32 +53,29 @@ const AboutSection = () => {
           {/* about text end */}
         </div>
 
-        <div className="col-lg-5">
+        <div className="col-lg-6">
           {/* about video */}
-          <div className="tst-about-cover tst-mb-60">
-            <img
-              src={Data.image.url}
-              alt={Data.image.alt}
-              className="tst-cover"
-            />
-            <div className="tst-overlay"></div>
-            <div className="tst-btn-animation"></div>
-            <a
-              className="tst-play-button"
-              onClick={() => setOpen(true)}
-              style={{ cursor: "pointer" }}
-              data-width="10"
-              data-height="600"
-            >
-              <i className="fas fa-play"></i>
-            </a>
-          </div>
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/2pk-cxj2sgw?start=103"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; 
+  autoplay; 
+  clipboard-write; 
+  encrypted-media; 
+  gyroscope; 
+  picture-in-picture; 
+  web-share" allowfullscreen></iframe>
+
           {/* about video end */}
         </div>
       </div>
       {/* about end */}
 
       <ModalVideo
+        playsinline={true}
         channel="youtube"
         isOpen={isOpen}
         videoId={Data.video.replace("https://www.youtube.com/watch?v=", "")}
