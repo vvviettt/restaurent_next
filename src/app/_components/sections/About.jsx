@@ -24,7 +24,7 @@ const AboutSection = () => {
               dangerouslySetInnerHTML={{ __html: Data.subtitle }}
             />
             <h3
-              className="tst-mb-30"
+              className="text-danger tst-mb-30"
               dangerouslySetInnerHTML={{ __html: Data.title }}
             />
             <p
