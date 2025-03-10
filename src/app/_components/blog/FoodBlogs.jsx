@@ -3,7 +3,7 @@ import FoodBlogItem from "./FoodBlogItem";
 
 function FoodBlogs({ posts }) {
   return (
-    <div className="row  pt-4">
+    <div className="row tst-feature-box  pt-4">
       {posts.map((item, index) => {
         return <FoodBlogItem key={item.id} item={item} />;
       })}
