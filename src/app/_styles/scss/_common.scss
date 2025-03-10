@@ -928,3 +928,27 @@ radio
 .tst-radio input[type=radio]:checked~.tst-check::before {
   background: $ac;
 }
+
+.menu-img {
+  margin-bottom: 20px;
+  border: 10px solid #fff !important;
+  border-radius: 50%;
+  box-shadow: 4px 5px 15px -7px rgba(0, 0, 0, .5);
+  -webkit-transition: all .8s ease;
+  -moz-transition: all .8s ease;
+  -ms-transition: all .8s ease;
+  -o-transition: all .8s ease;
+  transition: all .8s ease;
+}
+
+.zoom {
+  background-color: green;
+  transition: transform .4s; /* Animation */
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
