@@ -56,7 +56,7 @@ const AboutSection = () => {
         <div className="col-lg-6">
           {/* about video */}
           <iframe
-            width="560"
+            width="100%"
             height="315"
             src="https://www.youtube.com/embed/2pk-cxj2sgw?start=103"
             title="YouTube video player"
