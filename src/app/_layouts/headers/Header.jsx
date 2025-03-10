@@ -3,7 +3,7 @@ import styles from "./Header.module.scss";
 import { Link } from "@i18n/navigation";
 import AppData from "@data/app.json";
 import classNames from "classnames";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import LanguageSwitcher from "./LanguageSwitcher";
 
@@ -11,7 +11,8 @@ export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const locale = useLocale();
   const asPath = usePathname();
-
+  const [isSubOpen, setIsSubOpen] = useState(null);
+  const t = useTranslations("header");
   useEffect(() => {
     setMenuOpen(false);
   }, [asPath]);
@@ -37,7 +38,7 @@ export const Header = () => {
                   isPathActive(item.link) && styles.activeLink
                 )}
               >
-                <Link href={item.link}>{item.label}</Link>
+                <Link href={item.link}>{t(item.label)}</Link>
               </div>
             );
           })}
@@ -72,8 +73,32 @@ export const Header = () => {
                   styles.link,
                   isPathActive(item.link) && styles.activeLink
                 )}
+                onMouseEnter={() => setIsSubOpen(item.label)}
+                onMouseLeave={() => setIsSubOpen(null)}
               >
-                <Link href={item.link}>{item.label}</Link>
+                <Link href={!!item.children?.length ? "#" : item.link}>
+                  {t(item.label)}
+                </Link>
+                {!!item.children?.length && (
+                  <div
+                    className={classNames(styles.subLinks, {
+                      [styles.hidden]: !(item.label === isSubOpen),
+                    })}
+                    key={item.label}
+                  >
+                    {item.children?.map((child) => (
+                      <div
+                        key={`sub-header-${child.label}`}
+                        className={classNames(
+                          styles.link,
+                          isPathActive(child.link) && styles.activeLink
+                        )}
+                      >
+                        <Link href={child.link}>{t(child.label)}</Link>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             );
           })}
@@ -87,14 +112,55 @@ export const Header = () => {
           <div className={styles.mobileMenu}>
             {[...AppData.header.menu.left, ...AppData.header.menu.right].map(
               (item) => (
-                <Link
-                  className={classNames(
-                    isPathActive(item.link) && styles.mobileActiveLink
+                <div className={classNames("d-flex flex-column")}>
+                  {item.children.length ? (
+                    <div
+                      className={classNames("d-flex", {
+                        [styles.subLink]: item.children.length,
+                      })}
+                      onClick={() => {
+                        setIsSubOpen((prev) => (prev ? null : item.label));
+                      }}
+                    >
+                      {t(item.label)}
+                    </div>
+                  ) : (
+                    <Link
+                      className={classNames(
+                        isPathActive(item.link) && styles.mobileActiveLink
+                      )}
+                      href={item.link}
+                    >
+                      {t(item.label)}
+                    </Link>
                   )}
-                  href={item.link}
-                >
-                  {item.label}
-                </Link>
+                  {!!item.children?.length && isSubOpen === item.label && (
+                    <div
+                      className={classNames(styles.subLinks, {
+                        [styles.hidden]: !(item.label === isSubOpen),
+                      })}
+                      key={item.label}
+                    >
+                      {item.children?.map((child) => (
+                        <div
+                          key={`sub-header-${child.label}`}
+                          className={classNames(styles.link)}
+                        >
+                          <Link
+                            className={classNames(
+                              "d-flex",
+                              isPathActive(child.link) &&
+                                styles.mobileActiveLink
+                            )}
+                            href={child.link}
+                          >
+                            {t(child.label)}
+                          </Link>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
               )
             )}
           </div>

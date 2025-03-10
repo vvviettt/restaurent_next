@@ -1,1 +1,10 @@
-{}
+{
+  "header": {
+    "blog": "Bài viết",
+    "blog_food": "Món ăn",
+    "blog_news": "tin tức",
+    "reservation": "Đặt bàn",
+    "home": "Trang chủ",
+    "menu": "Menu"
+  }
+}

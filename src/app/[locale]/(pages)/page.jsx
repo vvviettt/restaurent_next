@@ -47,75 +47,87 @@ async function Home() {
               <AboutSection />
               <Divider />
               <FeaturesSection />
-              <div class="text-center my-5">
-                {/* <h3 class="text-danger fw-bold mb-5">Menu</h3> */}
+              <div className="text-center my-5">
+                {/* <h3 className="text-danger fw-bold mb-5">Menu</h3> */}
                 <div className="text-center">
-                  <h3
-                    className="tst-suptitle tst-suptitle-center tst-mb-15">Menu</h3>
-                  <h3
-                    className="tst-mb-30 text-danger">Đa dạng các loại hải sản
+                  <h3 className="tst-suptitle tst-suptitle-center tst-mb-15">
+                    Menu
                   </h3>
-                  <p
-                    className="tst-text tst-mb-60">100% tươi sống, sạch sẽ</p>
+                  <h3 className="tst-mb-30 text-danger">
+                    Đa dạng các loại hải sản
+                  </h3>
+                  <p className="tst-text tst-mb-60">100% tươi sống, sạch sẽ</p>
                 </div>
-                  <div className="row tst-feature-box pt-4">
-                    <a class="col-9 col-md-4 col-lg-3" href="<%= food.blogUrl %>">
-                      <div class="menu-item">
-                        <div class="menu-item--image">
-                          <img
-                            src="https://ngochuong.vn/upload/image/cache/data/Nhung/Feedback/Soup-tom-thai-822-crop-350-350.jpg"
-                            class="img-fluid rounded-fulll ratio-1x1 rounded-circle border menu-img zoom"
-                            alt="Món ăn"
-                          />
-                        </div>
-                        <div className="my-4">
-                          <h5>Soup tôm thái</h5>
-                        </div>
+                <div className="row tst-feature-box pt-4">
+                  <a
+                    className="col-9 col-md-4 col-lg-3"
+                    href="<%= food.blogUrl %>"
+                  >
+                    <div className="menu-item">
+                      <div className="menu-item--image">
+                        <img
+                          src="https://ngochuong.vn/upload/image/cache/data/Nhung/Feedback/Soup-tom-thai-822-crop-350-350.jpg"
+                          className="img-fluid rounded-fulll ratio-1x1 rounded-circle border menu-img zoom"
+                          alt="Món ăn"
+                        />
                       </div>
-                    </a>
-                    <a class="col-9 col-md-4 col-lg-3" href="<%= food.blogUrl %>">
-                      <div class="menu-item">
-                        <div class="menu-item--image">
-                          <img
-                            src="https://ngochuong.vn/upload/image/cache/data/Nhung/Menu/IMG8970-108-crop-350-350.jpg"
-                            class="img-fluid rounded-fulll ratio-1x1 rounded-circle border menu-img zoom"
-                            alt="Món ăn"
-                          />
-                        </div>
-                        <div className="my-4">
-                          <h5>Soup lẩu hải sản thập cẩm</h5>
-                        </div>
+                      <div className="my-4">
+                        <h5>Soup tôm thái</h5>
                       </div>
-                    </a>
-                    <a class="col-9 col-md-4 col-lg-3" href="<%= food.blogUrl %>">
-                      <div class="menu-item">
-                        <div class="menu-item--image">
-                          <img
-                            src="https://ngochuong.vn/upload/image/cache/data/Nhung/Menu/IMG9018-620-crop-350-350.jpg"
-                            class="img-fluid rounded-fulll ratio-1x1 rounded-circle border menu-img zoom"
-                            alt="Món ăn"
-                          />
-                        </div>
-                        <div className="my-4">
-                          <h5>Salad rong nho cá ngừ</h5>
-                        </div>
+                    </div>
+                  </a>
+                  <a
+                    className="col-9 col-md-4 col-lg-3"
+                    href="<%= food.blogUrl %>"
+                  >
+                    <div className="menu-item">
+                      <div className="menu-item--image">
+                        <img
+                          src="https://ngochuong.vn/upload/image/cache/data/Nhung/Menu/IMG8970-108-crop-350-350.jpg"
+                          className="img-fluid rounded-fulll ratio-1x1 rounded-circle border menu-img zoom"
+                          alt="Món ăn"
+                        />
                       </div>
-                    </a>
-                    <a class="col-9 col-md-4 col-lg-3" href="<%= food.blogUrl %>">
-                      <div class="menu-item">
-                        <div class="menu-item--image">
-                          <img
-                            src="https://ngochuong.vn/upload/image/cache/data/Nhung/Do-uong/a9c0e4dcc7f53eab67e4-2d6-crop-350-350.jpg"
-                            class="img-fluid rounded-fulll ratio-1x1 rounded-circle border menu-img zoom"
-                            alt="Món ăn"
-                          />
-                        </div>
-                        <div className="my-4">
-                          <h5>Rượu vang Chile 1865</h5>
-                        </div>
+                      <div className="my-4">
+                        <h5>Soup lẩu hải sản thập cẩm</h5>
                       </div>
-                    </a>
-                  </div>
+                    </div>
+                  </a>
+                  <a
+                    className="col-9 col-md-4 col-lg-3"
+                    href="<%= food.blogUrl %>"
+                  >
+                    <div className="menu-item">
+                      <div className="menu-item--image">
+                        <img
+                          src="https://ngochuong.vn/upload/image/cache/data/Nhung/Menu/IMG9018-620-crop-350-350.jpg"
+                          className="img-fluid rounded-fulll ratio-1x1 rounded-circle border menu-img zoom"
+                          alt="Món ăn"
+                        />
+                      </div>
+                      <div className="my-4">
+                        <h5>Salad rong nho cá ngừ</h5>
+                      </div>
+                    </div>
+                  </a>
+                  <a
+                    className="col-9 col-md-4 col-lg-3"
+                    href="<%= food.blogUrl %>"
+                  >
+                    <div className="menu-item">
+                      <div className="menu-item--image">
+                        <img
+                          src="https://ngochuong.vn/upload/image/cache/data/Nhung/Do-uong/a9c0e4dcc7f53eab67e4-2d6-crop-350-350.jpg"
+                          className="img-fluid rounded-fulll ratio-1x1 rounded-circle border menu-img zoom"
+                          alt="Món ăn"
+                        />
+                      </div>
+                      <div className="my-4">
+                        <h5>Rượu vang Chile 1865</h5>
+                      </div>
+                    </div>
+                  </a>
+                </div>
               </div>
 
               <Divider onlyBottom={0} />
