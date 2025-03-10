@@ -31,58 +31,36 @@
     "menu": {
       "left": [
         {
-          "label": "Trang chủ",
+          "label": "home",
           "link": "/",
           "children": []
         },
 
         {
-          "label": "Menu",
+          "label": "menu",
           "link": "/menu",
-          "children": [
-            {
-              "label": "Menu type 1",
-              "link": "/menu"
-            },
-            {
-              "label": "Menu type 2",
-              "link": "/menu-2"
-            }
-          ]
+          "children": []
         }
       ],
       "right": [
         {
-          "label": "Bài viết",
+          "label": "blog",
           "link": "/blog",
           "children": [
             {
-              "label": "Blog list",
-              "link": "/blog"
+              "label": "blog_food",
+              "link": "/blog/food"
             },
             {
-              "label": "Blog category",
-              "link": "/blog/category/recipes"
-            },
-            {
-              "label": "Publication",
-              "link": "/blog/incredible-vegan-mac-and-cheese"
+              "label": "blog_news",
+              "link": "/blog/news"
             }
           ]
         },
         {
-          "label": "Đặt chỗ",
+          "label": "reservation",
           "link": "/reservation",
-          "children": [
-            {
-              "label": "Reservation (Form)",
-              "link": "/reservation"
-            },
-            {
-              "label": "Reservation (OpenTable API)",
-              "link": "/reservation-2"
-            }
-          ]
+          "children": []
         }
       ]
     },

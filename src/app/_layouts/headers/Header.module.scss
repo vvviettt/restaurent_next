@@ -58,6 +58,33 @@
         list-style-type: none;
         display: flex;
 
+        .subLinks {
+            position: absolute;
+            top: 80%;
+            background-color: rgba(26, 47, 51, 0.7);
+            transition: all 0.3s ease, ;
+            z-index: 11111;
+
+            .link {
+                height: 60px;
+                min-width: 130px;
+
+                a {
+                    padding: 10px 30px;
+                }
+            }
+
+            &.hidden {
+                display: none;
+            }
+        }
+
+        // &:hover {
+        //     .subLinks {
+        //         display: block;
+        //     }
+        // }
+
         a {
             color: white;
             text-decoration: none;
@@ -91,6 +118,8 @@
             width: 100%;
             border-radius: 2px 2px 0 0;
         }
+
+
     }
 
     .activeLink {
@@ -122,6 +151,15 @@
     padding: 15px;
     text-align: center;
     z-index: 1000;
+
+    .subLinks {
+        margin-left: 15px;
+    }
+
+    .subLink {
+        padding: 15px;
+    }
+
 
     a {
         color: white;

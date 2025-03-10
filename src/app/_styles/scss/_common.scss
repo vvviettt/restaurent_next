@@ -943,14 +943,16 @@ radio
 
 .zoom {
   background-color: green;
-  transition: transform .4s; /* Animation */
+  transition: transform .4s;
+  /* Animation */
   width: 200px;
   height: 200px;
   margin: 0 auto;
 }
 
 .zoom:hover {
-  transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  transform: scale(1.2);
+  /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
 .modal-video-close-btn {
@@ -959,4 +961,8 @@ radio
 
 .ytp-cued-thumbnail-overlay {
   bottom: 0 !important;
+}
+
+.d-none {
+  display: none !important
 }
