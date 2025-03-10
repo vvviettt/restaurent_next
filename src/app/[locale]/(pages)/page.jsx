@@ -47,7 +47,7 @@ async function Home() {
               <AboutSection />
               <Divider />
               <FeaturesSection />
-              <div class="container text-center my-5">
+              <div class="text-center my-5">
                 {/* <h3 class="text-danger fw-bold mb-5">Menu</h3> */}
                 <div className="text-center">
                   <h3

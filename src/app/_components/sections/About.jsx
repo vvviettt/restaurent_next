@@ -4,7 +4,7 @@ import AppData from "@data/app.json";
 import Data from "@data/sections/about.json";
 import { Link, usePathname } from "@i18n/navigation";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import ModalVideo from "react-modal-video";
 import "react-modal-video/css/modal-video.css";
@@ -12,11 +12,19 @@ import "react-modal-video/css/modal-video.css";
 const AboutSection = () => {
   const [isOpen, setOpen] = useState(false);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.getElementById("tst-dynamic-menu").style.visibility = "hidden";
+    } else {
+      document.getElementById("tst-dynamic-menu").style.visibility = "visible";
+    }
+  }, [isOpen]);
+
   return (
     <>
       {/* about */}
       <div className="row align-items-center flex-sm-row-reverse" id="about">
-        <div className="col-lg-6">
+        <div className="col-lg-7">
           {/* about text */}
           <div className="tst-mb-60">
             <div
@@ -53,22 +61,26 @@ const AboutSection = () => {
           {/* about text end */}
         </div>
 
-        <div className="col-lg-6">
+        <div className="col-lg-5">
           {/* about video */}
-          <iframe
-            width="100%"
-            height="315"
-            src="https://www.youtube.com/embed/2pk-cxj2sgw?start=103"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; 
-  autoplay; 
-  clipboard-write; 
-  encrypted-media; 
-  gyroscope; 
-  picture-in-picture; 
-  web-share" allowfullscreen></iframe>
-
+          <div className="tst-about-cover tst-mb-60">
+            <img
+              src={Data.image.url}
+              alt={Data.image.alt}
+              className="tst-cover"
+            />
+            <div className="tst-overlay"></div>
+            <div className="tst-btn-animation"></div>
+            <a
+              className="tst-play-button"
+              onClick={() => setOpen(true)}
+              style={{ cursor: "pointer" }}
+              data-width="10"
+              data-height="600"
+            >
+              <i className="fas fa-play"></i>
+            </a>
+          </div>
           {/* about video end */}
         </div>
       </div>
