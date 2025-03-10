@@ -48,7 +48,7 @@ async function Home() {
               <Divider />
               <FeaturesSection />
               <div class="container text-center my-5">
-                <h2 class="text-danger fw-bold mb-5">Menu</h2>
+                <h3 class="text-danger fw-bold mb-5">Menu</h3>
                 <div class="row g-4">
                   <a class="col-12 col-md-4 col-lg-3" href="<%= food.blogUrl %>">
                     <div class="menu-item">
