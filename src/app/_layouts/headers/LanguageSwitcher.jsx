@@ -5,6 +5,7 @@ import { useLocale } from "next-intl";
 import { Link, usePathname } from "@i18n/navigation";
 import styles from "./LanguageSwitcher.module.scss";
 import AppData from "@data/app.json";
+import Image from "next/image";
 
 export default function LanguageSwitcher() {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,7 +23,7 @@ export default function LanguageSwitcher() {
         onClick={() => setIsOpen(!isOpen)}
         className={styles.toggleButton}
       >
-        <span>{currentLang?.flag}</span>
+        <Image alt="flag" src={currentLang?.flag} width={25} height={60} />
         <svg
           width={24}
           height={24}
@@ -60,7 +61,7 @@ export default function LanguageSwitcher() {
                 locale={code}
                 className={styles.link}
               >
-                {flag}
+                <Image alt="flag" src={flag} width={20} height={40} />
               </Link>
             </li>
           ))}

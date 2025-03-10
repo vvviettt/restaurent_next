@@ -90,27 +90,27 @@
       {
         "code": "en",
         "label": "English",
-        "flag": "🇺🇸"
+        "flag": "/img/icons/english.svg"
       },
       {
         "code": "vi",
         "label": "Vietnam",
-        "flag": "🇻🇳"
+        "flag": "/img/icons/vietnam.svg"
       },
       {
         "code": "ko",
         "label": "Korean",
-        "flag": "🇰🇷"
+        "flag": "/img/icons/korea.svg"
       },
       {
         "code": "cn",
         "label": "China",
-        "flag": "🇨🇳"
+        "flag": "/img/icons/china.svg"
       },
       {
         "code": "jp",
         "label": "Japan",
-        "flag": "🇯🇵"
+        "flag": "/img/icons/japan.svg"
       }
     ],
     "onepage": [
