@@ -1,6 +1,6 @@
 import HeaderLayoutDefault from "./LayoutDefault";
 
-const Header = ({ layout }) => {
+const Header = ({ layout, data }) => {
   switch (layout) {
     case 1:
       return;
@@ -9,9 +9,7 @@ const Header = ({ layout }) => {
       return;
 
     default:
-      return (
-        <HeaderLayoutDefault />
-      );
+      return <HeaderLayoutDefault data={data} />;
   }
 };
 export default Header;

@@ -2,8 +2,9 @@
 
 import Data from "@data/sections/schedule.json";
 import { Link, usePathname } from "@i18n/navigation";
+import classNames from "classnames";
 
-const ScheduleSection = () => {
+const ScheduleSection = ({ data }) => {
   return (
     <div className="tst-pb-60">
       {/* schedule */}
@@ -23,46 +24,36 @@ const ScheduleSection = () => {
               <div className="tst-suptitle tst-suptitle-mobile-center tst-white-2 tst-mb-15">
                 {Data.subtitle}
               </div>
-              <h2
+              <h3
                 className="tst-white-2 tst-mb-30"
-                dangerouslySetInnerHTML={{ __html: Data.title }}
+                dangerouslySetInnerHTML={{ __html: data.title }}
               />
               <p
                 className="tst-text tst-white-2 tst-mb-30"
-                dangerouslySetInnerHTML={{ __html: Data.description }}
+                dangerouslySetInnerHTML={{ __html: data.desc }}
               />
 
-              <div className="tst-btn-mobile">
-                <Link
-                  href={Data.button1.link}
-                  className="tst-btn tst-res-btn tst-mr-30"
-                >
-                  {Data.button1.label}
-                </Link>
-                <Link
-                  href={Data.button2.link}
-                  className="tst-label tst-white-2"
-                >
-                  {Data.button2.label}
-                </Link>
+              <div className="d-flex tst-btn-mobile tst-gap-30">
+                {data?.buttons?.map((item) => {
+                  return (
+                    <Link
+                      href={item.redirect_link ?? ""}
+                      key={item.id}
+                      className={classNames("align-content-center", {
+                        "tst-btn tst-res-btn": item.type === "outline",
+                        "tst-label tst-white-2": item.type === "transparent",
+                      })}
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           </div>
           <div className="col-lg-4">
             <div className="tst-wh-frame">
-              {Data.items.map((item, key) => (
-                <div key={`schedule-item-${key}`}>
-                  <div className="tst-label">{item.label}</div>
-                  <div className="h5">
-                    {item.from.hours} <span className="tst-color">:</span>{" "}
-                    {item.from.minutes}
-                  </div>
-                  <div className="h5">
-                    {item.to.hours} <span className="tst-color">:</span>{" "}
-                    {item.to.minutes}
-                  </div>
-                </div>
-              ))}
+              <div dangerouslySetInnerHTML={{ __html: data.content }} />
             </div>
           </div>
         </div>

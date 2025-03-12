@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import dynamic from "next/dynamic";
 
 import { getSortedPostsData } from "@library/posts";
+import { strapiApiRequest } from "@library/strapi";
 
 import AppData from "@data/app.json";
 
@@ -15,6 +16,8 @@ import CountersSection from "@components/sections/Counters";
 import CallToActionSection from "@components/sections/CallToAction";
 import LatestPostsSection from "@components/sections/LatestPosts";
 import SubscribeSection from "@components/sections/Subscribe";
+import { getLocale } from "next-intl/server";
+import FoodBlogs from "../../_components/sections/FoodBlogs";
 
 const HeroSlider = dynamic(() => import("@components/sliders/Hero"), {
   ssr: false,
@@ -32,110 +35,39 @@ export const metadata = {
 };
 
 async function Home() {
+  const locale = await getLocale();
+  const content = await getContentData(locale);
   const posts = await getAllPosts();
 
   return (
     <>
       <div id="tst-dynamic-banner" className="tst-dynamic-banner">
-        <HeroSlider />
+        <HeroSlider data={content?.data?.attributes?.banner} />
       </div>
       <div id="tst-dynamic-content" className="tst-dynamic-content">
         <div className="tst-content-frame">
           <div className="tst-content-box">
             <div className="container tst-p-60-0">
               <ScrollHint />
-              <AboutSection />
+              <AboutSection data={content?.data?.attributes?.about} />
               <Divider />
-              <FeaturesSection />
-              <div className="text-center my-5">
-                {/* <h3 className="text-danger fw-bold mb-5">Menu</h3> */}
-                <div className="text-center">
-                  <h3 className="tst-suptitle tst-suptitle-center tst-mb-15">
-                    Menu
-                  </h3>
-                  <h3 className="tst-mb-30 text-danger">
-                    Đa dạng các loại hải sản
-                  </h3>
-                  <p className="tst-text tst-mb-60">100% tươi sống, sạch sẽ</p>
-                </div>
-                <div className="row tst-feature-box pt-4">
-                  <a
-                    className="col-9 col-md-4 col-lg-3"
-                    href="<%= food.blogUrl %>"
-                  >
-                    <div className="menu-item">
-                      <div className="menu-item--image">
-                        <img
-                          src="https://ngochuong.vn/upload/image/cache/data/Nhung/Feedback/Soup-tom-thai-822-crop-350-350.jpg"
-                          className="img-fluid rounded-fulll ratio-1x1 rounded-circle border menu-img zoom"
-                          alt="Món ăn"
-                        />
-                      </div>
-                      <div className="my-4">
-                        <h5>Soup tôm thái</h5>
-                      </div>
-                    </div>
-                  </a>
-                  <a
-                    className="col-9 col-md-4 col-lg-3"
-                    href="<%= food.blogUrl %>"
-                  >
-                    <div className="menu-item">
-                      <div className="menu-item--image">
-                        <img
-                          src="https://ngochuong.vn/upload/image/cache/data/Nhung/Menu/IMG8970-108-crop-350-350.jpg"
-                          className="img-fluid rounded-fulll ratio-1x1 rounded-circle border menu-img zoom"
-                          alt="Món ăn"
-                        />
-                      </div>
-                      <div className="my-4">
-                        <h5>Soup lẩu hải sản thập cẩm</h5>
-                      </div>
-                    </div>
-                  </a>
-                  <a
-                    className="col-9 col-md-4 col-lg-3"
-                    href="<%= food.blogUrl %>"
-                  >
-                    <div className="menu-item">
-                      <div className="menu-item--image">
-                        <img
-                          src="https://ngochuong.vn/upload/image/cache/data/Nhung/Menu/IMG9018-620-crop-350-350.jpg"
-                          className="img-fluid rounded-fulll ratio-1x1 rounded-circle border menu-img zoom"
-                          alt="Món ăn"
-                        />
-                      </div>
-                      <div className="my-4">
-                        <h5>Salad rong nho cá ngừ</h5>
-                      </div>
-                    </div>
-                  </a>
-                  <a
-                    className="col-9 col-md-4 col-lg-3"
-                    href="<%= food.blogUrl %>"
-                  >
-                    <div className="menu-item">
-                      <div className="menu-item--image">
-                        <img
-                          src="https://ngochuong.vn/upload/image/cache/data/Nhung/Do-uong/a9c0e4dcc7f53eab67e4-2d6-crop-350-350.jpg"
-                          className="img-fluid rounded-fulll ratio-1x1 rounded-circle border menu-img zoom"
-                          alt="Món ăn"
-                        />
-                      </div>
-                      <div className="my-4">
-                        <h5>Rượu vang Chile 1865</h5>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-
+              <FeaturesSection data={content?.data?.attributes?.outstanding} />
+              <Divider />
+              <Suspense fallback={<div>Loading...</div>}>
+                <FoodBlogs
+                  posts={posts}
+                  data={content?.data?.attributes?.food_blogs}
+                />
+              </Suspense>
               <Divider onlyBottom={0} />
               <Suspense fallback={<div>Loading...</div>}>
-                <LatestPostsSection posts={posts} />
+                <LatestPostsSection
+                  posts={posts}
+                  data={content?.data?.attributes?.news_blog}
+                />
               </Suspense>
               <Divider />
-              <ScheduleSection />
+              <ScheduleSection data={content?.data?.attributes?.open_time} />
               {/* <CountersSection /> */}
             </div>
           </div>
@@ -150,4 +82,13 @@ export default Home;
 async function getAllPosts() {
   const allPosts = getSortedPostsData();
   return allPosts;
+}
+
+async function getContentData(locale) {
+  const homeData = await strapiApiRequest(
+    `home?locale=${locale}&populate[0]=about&populate[1]=about.social_media_links&populate[2]=about.social_media_links.icon&populate[3]=outstanding&populate[4]=outstanding.items&populate[5]=outstanding.items.icon&populate[6]=news_blog&populate[7]=food_blogs&populate[8]=open_time&populate[9]=open_time.buttons&populate[10]=banner&populate[11]=banner.image
+`
+  );
+
+  return homeData;
 }

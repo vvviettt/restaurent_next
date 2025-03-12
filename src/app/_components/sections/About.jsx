@@ -3,13 +3,14 @@
 import AppData from "@data/app.json";
 import Data from "@data/sections/about.json";
 import { Link, usePathname } from "@i18n/navigation";
+import Image from "next/image";
 
 import { useState, useEffect } from "react";
 
 import ModalVideo from "react-modal-video";
 import "react-modal-video/css/modal-video.css";
 
-const AboutSection = () => {
+const AboutSection = ({ data }) => {
   const [isOpen, setOpen] = useState(false);
 
   useEffect(() => {
@@ -27,34 +28,30 @@ const AboutSection = () => {
         <div className="col-lg-7">
           {/* about text */}
           <div className="tst-mb-60">
-            <div
-              className="tst-suptitle tst-mb-15"
-              dangerouslySetInnerHTML={{ __html: Data.subtitle }}
-            />
-            <h3
-              className="text-danger tst-mb-30"
-              dangerouslySetInnerHTML={{ __html: Data.title }}
-            />
-            <p
-              className="tst-text tst-mb-30"
-              dangerouslySetInnerHTML={{ __html: Data.description }}
-            />
+            <div className="tst-suptitle tst-mb-15">{data?.name}</div>
+            <h3 className="text-danger tst-mb-30">{data?.title}</h3>
+            <p className="tst-text tst-mb-30">{data?.desc}</p>
 
             <Link
-              href={Data.button.link}
+              href={data.redirect_link ?? "#"}
               className="tst-btn tst-anima-link tst-mr-30"
             >
-              {Data.button.label}
+              {data.button_text}
             </Link>
 
-            {AppData.social.map((item, key) => (
+            {data?.social_media_links?.map((item) => (
               <a
-                href={item.url}
+                href={item.link}
                 className="tst-icon-link"
                 title={item.title}
-                key={`about-social-item-${key}`}
+                key={`about-social-item-${item.id}`}
               >
-                <i className={item.icon}></i>
+                <Image
+                  width={20}
+                  height={20}
+                  alt=""
+                  src={`${process.env.NEXT_PUBLIC_STRAPI_MEDIA_URL}${item.icon.data.attributes.url}`}
+                />
               </a>
             ))}
           </div>

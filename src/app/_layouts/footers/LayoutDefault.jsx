@@ -11,7 +11,7 @@ const FooterGallery = dynamic(() => import("@layouts/footers/Gallery"), {
   ssr: false,
 });
 
-const DefaultFooter = () => {
+const DefaultFooter = ({ data }) => {
   const asPath = usePathname();
 
   useEffect(() => {
@@ -47,8 +47,8 @@ const DefaultFooter = () => {
               <div className="row" style={{ justifyContent: "space-between" }}>
                 <div className="tst-footer-logo">
                   <img
-                    src={AppData.footer.logo.url}
-                    alt={AppData.footer.logo.alt}
+                    src={`${process.env.NEXT_PUBLIC_STRAPI_MEDIA_URL}${data.logo.data.attributes.url}`}
+                    alt={""}
                     className="tst-logo"
                     height={60}
                   />

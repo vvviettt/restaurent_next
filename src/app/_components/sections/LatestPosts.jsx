@@ -4,7 +4,7 @@ import { Link, usePathname } from "@i18n/navigation";
 
 import BlogItem from "@components/blog/BlogItem";
 
-const LatestPostsSection = ({ posts }) => {
+const LatestPostsSection = ({ posts, data }) => {
   return (
     <>
       {/* latest posts */}
@@ -12,18 +12,11 @@ const LatestPostsSection = ({ posts }) => {
         <div className="col-lg-12">
           {/* title */}
           <div className="text-center">
-            <div
-              className="tst-suptitle tst-suptitle-center tst-mb-15"
-              dangerouslySetInnerHTML={{ __html: Data.subtitle }}
-            />
-            <h3
-              className="text-danger tst-mb-30"
-              dangerouslySetInnerHTML={{ __html: Data.title }}
-            />
-            <p
-              className="tst-text tst-mb-60"
-              dangerouslySetInnerHTML={{ __html: Data.description }}
-            />
+            <div className="tst-suptitle tst-suptitle-center tst-mb-15">
+              {data.name}
+            </div>
+            <h3 className="text-danger tst-mb-30">{data.title}</h3>
+            <p className="tst-text tst-mb-60">{data.desc}</p>
           </div>
           {/* title end */}
         </div>

@@ -84,7 +84,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+strong {
   font-family: $pf;
   font-weight: 900;
   margin: 0;
@@ -965,4 +966,8 @@ radio
 
 .d-none {
   display: none !important
+}
+
+.tst-gap-30 {
+  gap: 30px;
 }

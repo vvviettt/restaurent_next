@@ -12,7 +12,7 @@ import MiniCart from "@layouts/cart/MiniCart";
 import ReservationForm from "@components/forms/ReservationForm";
 import { Header } from "./Header";
 
-const DefaultHeader = () => {
+const DefaultHeader = ({ data }) => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState(false);
   const [miniCart, setMiniCart] = useState(false);
@@ -46,8 +46,6 @@ const DefaultHeader = () => {
     }
   }, []);
 
-  console.log(mobileMenu);
-
   return (
     <>
       {/* top bar frame */}
@@ -55,7 +53,7 @@ const DefaultHeader = () => {
       <div className="tst-menu-frame">
         {/* top bar */}
         <div className="tst-dynamic-menu" id="tst-dynamic-menu">
-          <Header />
+          <Header data={data} />
         </div>
         {/* top bar end */}
       </div>

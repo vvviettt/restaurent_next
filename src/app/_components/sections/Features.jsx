@@ -1,6 +1,7 @@
 import Data from "@data/sections/features.json";
+import Image from "next/image";
 
-const FeaturesOneSection = () => {
+const FeaturesOneSection = ({ data }) => {
   return (
     <>
       {/* features */}
@@ -8,32 +9,28 @@ const FeaturesOneSection = () => {
         <div className="col-lg-12">
           {/* title */}
           <div className="text-center">
-            <div
-              className="tst-suptitle tst-suptitle-center tst-mb-15"
-              dangerouslySetInnerHTML={{ __html: Data.subtitle }}
-            />
-            <h3
-              className="tst-mb-30 text-danger"
-              dangerouslySetInnerHTML={{ __html: Data.title }}
-            />
-            <p
-              className="tst-text tst-mb-60"
-              dangerouslySetInnerHTML={{ __html: Data.description }}
-            />
+            <div className="tst-suptitle tst-suptitle-center tst-mb-15">
+              {data.name}
+            </div>
+            <h3 className="tst-mb-30 text-danger">{data.title}</h3>
+            <p className="tst-text tst-mb-60">{data.desc}</p>
           </div>
           {/* title end */}
         </div>
         <div className="row tst-feature-box">
-          {Data.items.map((item, key) => (
-            <div className="col-lg-4" key={`features-item-${key}`}>
+          {data?.items?.map((item) => (
+            <div className="col-lg-4" key={`features-item-${item.id}`}>
               {/* icon box */}
               <div className="tst-icon-box tst-mb-60">
-                <img src={item.icon} alt="icon" className="tst-mb-30" />
-                <h5 className="tst-mb-30">{item.title}</h5>
-                <div
-                  className="tst-text"
-                  dangerouslySetInnerHTML={{ __html: item.text }}
+                <Image
+                  width={70}
+                  height={70}
+                  src={`${process.env.NEXT_PUBLIC_STRAPI_MEDIA_URL}${item.icon.data.attributes.url}`}
+                  alt="icon"
+                  className="tst-mb-30"
                 />
+                <h5 className="tst-mb-30">{item.title}</h5>
+                <div className="tst-text">{item.desc}</div>
               </div>
               {/* icon box end */}
             </div>

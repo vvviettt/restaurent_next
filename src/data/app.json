@@ -66,29 +66,25 @@
     },
     "languages": [
       {
-        "code": "en",
-        "label": "English",
-        "flag": "/img/icons/english.svg"
-      },
-      {
         "code": "vi",
         "label": "Vietnam",
         "flag": "/img/icons/vietnam.svg"
       },
+      {
+        "code": "en",
+        "label": "English",
+        "flag": "/img/icons/english.svg"
+      },
+
       {
         "code": "ko",
         "label": "Korean",
         "flag": "/img/icons/korea.svg"
       },
       {
-        "code": "cn",
+        "code": "zh",
         "label": "China",
         "flag": "/img/icons/china.svg"
-      },
-      {
-        "code": "jp",
-        "label": "Japan",
-        "flag": "/img/icons/japan.svg"
       }
     ],
     "onepage": [
@@ -131,15 +127,15 @@
       "title": "",
       "items": [
         {
-          "label": "Số điện thoại",
+          "label": "phone",
           "value": "+84 784875728"
         },
         {
-          "label": "Email",
+          "label": "email",
           "value": "your.email.inbox@here.com"
         },
         {
-          "label": "Địa chỉ",
+          "label": "address",
           "value": "10 Võ Văn KiệtAn Hải Bắc, Sơn Trà, Đà Nẵng"
         }
       ],

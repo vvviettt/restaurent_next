@@ -9,7 +9,7 @@ import { Link, usePathname } from "@i18n/navigation";
 
 import { ScrollAnimation } from "@common/scrollAnims";
 
-const HeroSlider = () => {
+const HeroSlider = ({ data }) => {
   useEffect(() => {
     ScrollAnimation();
   }, []);
@@ -22,14 +22,17 @@ const HeroSlider = () => {
         className="swiper-container tst-main-slider"
         style={{ overflow: "visible" }}
       >
-        {Data.items.map((item, key) => (
-          <SwiperSlide className="swiper-slide" key={`hero-slider-item-${key}`}>
+        {data?.map((item, key) => (
+          <SwiperSlide
+            className="swiper-slide"
+            key={`hero-slider-item-${item.id}`}
+          >
             {/* banner */}
             <div className="tst-banner">
               <div className="tst-cover-frame">
                 <img
-                  src={item.image.url}
-                  alt={item.image.alt}
+                  src={`${process.env.NEXT_PUBLIC_STRAPI_MEDIA_URL}${item.image.data.attributes.url}`}
+                  alt="banner"
                   className="tst-cover tst-parallax"
                   data-swiper-parallax-y="120"
                   data-swiper-parallax-scale="1.2"
@@ -48,7 +51,7 @@ const HeroSlider = () => {
                     >
                       <div
                         className="tst-suptitle tst-suptitle-mobile-center tst-text-shadow tst-white-2 tst-mb-15"
-                        dangerouslySetInnerHTML={{ __html: item.subtitle }}
+                        dangerouslySetInnerHTML={{ __html: item.name }}
                       />
                       <h1
                         className="tst-white-2 tst-text-shadow tst-mb-30"
@@ -56,19 +59,13 @@ const HeroSlider = () => {
                       />
                       <div
                         className="tst-text tst-text-shadow tst-text-lg tst-white-2 tst-mb-30"
-                        dangerouslySetInnerHTML={{ __html: item.text }}
+                        dangerouslySetInnerHTML={{ __html: item.desc }}
                       />
                       <Link
-                        href={item.button1.link}
+                        href={item.redirect_link}
                         className="tst-btn tst-btn-lg tst-btn-shadow tst-res-btn tst-mr-30"
                       >
-                        {item.button1.label}
-                      </Link>
-                      <Link
-                        href={item.button2.link}
-                        className="tst-label tst-white-2"
-                      >
-                        {item.button2.label}
+                        {item.button_text}
                       </Link>
                     </div>
                   </div>
