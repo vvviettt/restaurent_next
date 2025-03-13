@@ -14,6 +14,8 @@ import SubscribeSection from "@components/sections/Subscribe";
 
 import { getPaginatedPostsData, getFeaturedPostsData } from "@library/posts";
 import { useSearchParams } from "next/navigation";
+import { strapiApiRequest } from "@/src/app/_lib/strapi";
+import { getLocale } from "next-intl/server";
 
 const FoodBlogs = dynamic(() => import("@components/blog/FoodBlogs"), {
   ssr: false,
@@ -27,9 +29,17 @@ export const metadata = {
 };
 
 async function FoodBlog({ searchParams }) {
-  const populars = await getAllPupulars();
-  const postsData = await getAllPosts();
-
+  const pageSize = 8;
+  const locale = await getLocale();
+  const content = await getContentData(locale, searchParams?.page, pageSize);
+  const totalPage = Math.ceil(
+    (content?.meta?.pagination?.total ?? 0) / pageSize
+  );
+  let foodBlogData = content.data.map((item) => ({
+    id: item.id,
+    name: item.attributes.title,
+    image: item.attributes.thumbnail.data.attributes.formats.thumbnail.url,
+  }));
   return (
     <>
       <div id="tst-dynamic-banner" className="tst-dynamic-banner">
@@ -65,15 +75,17 @@ async function FoodBlog({ searchParams }) {
                 </div>
               </div>
 
-              <FoodBlogs posts={postsData.posts} />
-              <Pagination
-                currentPage={
-                  !searchParams.page ? 1 : Number.parseInt(searchParams.page)
-                }
-                totalItems={postsData.totalPosts}
-                perPage={AppData.settings.perPage}
-                renderPageLink={(page) => `/blog/food?page=${page}`}
-              />
+              <FoodBlogs posts={foodBlogData} />
+              {totalPage > 1 && (
+                <Pagination
+                  currentPage={
+                    !searchParams.page ? 1 : Number.parseInt(searchParams.page)
+                  }
+                  totalItems={content.meta.pagination.total}
+                  perPage={pageSize}
+                  renderPageLink={(page) => `/blog/food?page=${page}`}
+                />
+              )}
               {/* <Divider onlyBottom={0} />
               <Suspense fallback={<div>Loading...</div>}>
                 <PopularPosts posts={populars} />
@@ -89,24 +101,17 @@ async function FoodBlog({ searchParams }) {
 }
 export default FoodBlog;
 
-async function getAllPupulars() {
-  const popularsData = await getFeaturedPostsData(PopularsPostsData.featured);
+async function getContentData(locale, page = 1, size) {
+  let foodBlogData = await strapiApiRequest(
+    `food-blog?locale=${locale}&populate[0]=title&populate[1]=thumbnail&populate[2]=content&pagination[page]=${page}&pagination[pageSize]=${size}`,
+    undefined,
+    undefined,
+    {
+      next: {
+        revalidate: 60 * 10,
+      },
+    }
+  );
 
-  return popularsData;
-}
-
-async function getAllPosts() {
-  const posts = Array.from({ length: 8 }, (_, index) => {
-    return {
-      id: index,
-      name: "Soup lẩu hải sản thập cẩm",
-      image:
-        "https://ngochuong.vn/upload/image/cache/data/Nhung/Menu/IMG8970-108-crop-350-350.jpg",
-    };
-  });
-
-  return {
-    posts: posts,
-    totalPosts: 12,
-  };
+  return foodBlogData;
 }

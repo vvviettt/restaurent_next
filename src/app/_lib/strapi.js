@@ -4,7 +4,8 @@ const BEARER_TOKEN = process.env.STRAPI_API_TOKEN;
 export const strapiApiRequest = async (
   endpoint,
   method = "GET",
-  data = null
+  data = null,
+  ops = {}
 ) => {
   const url = `${API_BASE_URL}${endpoint}`;
   const options = {
@@ -13,8 +14,8 @@ export const strapiApiRequest = async (
       Authorization: `Bearer ${BEARER_TOKEN}`,
       "Content-Type": "application/json",
     },
+    ...ops,
   };
-  console.log(url);
 
   if (data) {
     options.body = JSON.stringify(data);

@@ -6,7 +6,7 @@ custom
 /*-------------------------
 swiper
 --------------------------*/
-.tst-slider-pagination, 
+.tst-slider-pagination,
 .tst-slider-navigation .tst-slider-pagination,
 body .tst-slider-navigation .tst-slider-pagination {
   display: flex;
@@ -66,17 +66,17 @@ body .tst-slider-navigation .tst-slider-pagination {
       transition: $tr-sm;
 
       &:hover {
-        filter:brightness(108%);
+        filter: brightness(108%);
         transform: scale(1.015);
       }
 
       &.swiper-button-disabled {
         pointer-events: none;
         opacity: 0.3;
-        background-color: rgba(26,47,51,0.10);
+        background-color: rgba(26, 47, 51, 0.10);
 
         &:hover {
-          background-color: rgba(26,47,51,0.10);
+          background-color: rgba(26, 47, 51, 0.10);
           opacity: 0.1;
         }
       }
@@ -109,29 +109,32 @@ body .tst-slider-navigation .tst-slider-pagination {
 }
 
 @media (max-width: 767px) {
-	.tst-dynamic-banner {min-height: 80px;}
+  .tst-dynamic-banner {
+    min-height: 80px;
+  }
 }
 
 @media (min-width: 768px) {
-	.tst-main-slider-navigation {
-		margin-left: -360px;
-		width: 720px;
-	}
+  .tst-main-slider-navigation {
+    margin-left: -360px;
+    width: 720px;
+  }
 }
 
 @media (min-width: 992px) {
-	.tst-main-slider-navigation {
-		margin-left: -480px;
-		width: 960px;
-	}
+  .tst-main-slider-navigation {
+    margin-left: -480px;
+    width: 960px;
+  }
 }
 
 @media (min-width: 1200px) {
-	.tst-main-slider-navigation {
-		margin-left: -600px;
-		width: 1200px;
-	}
+  .tst-main-slider-navigation {
+    margin-left: -600px;
+    width: 1200px;
+  }
 }
+
 @media (max-width: 767px) {
   .tst-main-slider-navigation {
     justify-content: space-between;
@@ -158,7 +161,7 @@ body .tst-slider-navigation .tst-slider-pagination {
     }
 
     & i {
-      text-shadow: 0 5px 20px rgba(26,47,51,0.95);
+      text-shadow: 0 5px 20px rgba(26, 47, 51, 0.95);
     }
 
     &:focus {
@@ -183,7 +186,7 @@ body .tst-slider-navigation .tst-slider-pagination {
     margin: 0 20px 0 0 !important;
     opacity: 1;
     border: solid 3px $wl1 !important;
-    box-shadow: 0 5px 10px 0 rgba(26,47,51,0.9) !important;
+    box-shadow: 0 5px 10px 0 rgba(26, 47, 51, 0.9) !important;
     transition: $tr-sm;
     background-color: transparent !important;
 
@@ -203,6 +206,7 @@ body .tst-slider-navigation .tst-slider-pagination {
     }
   }
 }
+
 @media (max-width: 790px) {
   .tst-slider-navigation {
     display: flex;
@@ -238,6 +242,7 @@ body .tst-slider-navigation .tst-slider-pagination {
     bottom: 15px;
   }
 }
+
 /*-------------------------
 datepicker
 --------------------------*/
@@ -246,7 +251,7 @@ datepicker
   border: none;
   font-weight: 400;
   font-family: $sf;
-  box-shadow: 0 2px 5px 0 rgba(26,47,51,0.11);
+  box-shadow: 0 2px 5px 0 rgba(26, 47, 51, 0.11);
 
   & .datepicker--nav {
     padding-top: 10px;
@@ -256,7 +261,7 @@ datepicker
   }
 
   & .datepicker--cell.-current- {
-    background-color: rgba(26,47,51 ,.2);
+    background-color: rgba(26, 47, 51, .2);
     color: $dl1;
   }
 
@@ -274,6 +279,7 @@ datepicker
 .datepicker--pointer {
   display: none;
 }
+
 /*-------------------------
 nice select
 --------------------------*/
@@ -282,7 +288,7 @@ nice select
   height: 50px;
   padding: 0 20px;
   margin-bottom: 30px;
-  box-shadow: 0 2px 5px 0 rgba(26,47,51,0.11);
+  box-shadow: 0 2px 5px 0 rgba(26, 47, 51, 0.11);
 
   & span {
     line-height: 53px;
@@ -292,14 +298,14 @@ nice select
   & .list {
     max-height: 200px;
     overflow-y: scroll;
-    box-shadow: 0 2px 5px 0 rgba(26,47,51,0.11);
+    box-shadow: 0 2px 5px 0 rgba(26, 47, 51, 0.11);
     margin: 0;
     padding: 0;
     margin-top: 10px;
     padding-bottom: 0;
 
     &::-webkit-scrollbar-track {
-      background: rgba(0,0,0,0);
+      background: rgba(0, 0, 0, 0);
     }
 
     & li {
@@ -309,12 +315,14 @@ nice select
     }
   }
 }
+
 /*-------------------------
 fancybox
 --------------------------*/
 .fancybox-slide--video .fancybox-content {
   width: 80% !important;
 }
+
 /*-------------------------
 mapbox
 --------------------------*/
@@ -331,6 +339,7 @@ mapbox
     }
   }
 }
+
 @keyframes marker {
   0% {
     transform: translateY(0);
@@ -344,11 +353,15 @@ mapbox
     transform: translateY(0);
   }
 }
+
 @media (max-width: 790px) {
   .mapboxgl-marker {
     display: none;
   }
 }
 
-.modal-video-inner {
+.modal-video-inner {}
+
+.flex-1 {
+  flex: 1;
 }

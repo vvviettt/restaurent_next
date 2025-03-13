@@ -37,7 +37,20 @@ export const metadata = {
 async function Home() {
   const locale = await getLocale();
   const content = await getContentData(locale);
-  const posts = await getAllPosts();
+  const foodData = await getFoodBlogs(locale);
+  const newsData = await getNewsBlogs(locale);
+  let foodBlogData = foodData.data.map((item) => ({
+    id: item.id,
+    name: item.attributes.title,
+    image: item.attributes.thumbnail.data.attributes.url,
+  }));
+
+  let newBlogData = newsData.data.map((item) => ({
+    id: item.id,
+    title: item.attributes.title,
+    content: item.attributes.desc,
+    image: item.attributes.thumbnail.data.attributes.url,
+  }));
 
   return (
     <>
@@ -55,14 +68,14 @@ async function Home() {
               <Divider />
               <Suspense fallback={<div>Loading...</div>}>
                 <FoodBlogs
-                  posts={posts}
+                  posts={foodBlogData}
                   data={content?.data?.attributes?.food_blogs}
                 />
               </Suspense>
               <Divider onlyBottom={0} />
               <Suspense fallback={<div>Loading...</div>}>
                 <LatestPostsSection
-                  posts={posts}
+                  posts={newBlogData}
                   data={content?.data?.attributes?.news_blog}
                 />
               </Suspense>
@@ -84,10 +97,40 @@ async function getAllPosts() {
   return allPosts;
 }
 
+async function getFoodBlogs(locale) {
+  const dataFoodFive = await strapiApiRequest(
+    `food-blog?locale=${locale}&populate[0]=title&populate[1]=thumbnail&populate[2]=content&pagination[pageSize]=4`,
+    undefined,
+    undefined,
+    {
+      next: { revalidate: 60 * 10 },
+    }
+  );
+
+  return dataFoodFive;
+}
+
+async function getNewsBlogs(locale) {
+  const dataNewsFive = await strapiApiRequest(
+    `news-blogs?locale=${locale}&populate[0]=title&populate[1]=thumbnail&populate[2]=content&pagination[pageSize]=3&sort[0]=createdAt:desc`,
+    undefined,
+    undefined,
+    {
+      next: { revalidate: 60 * 10 },
+    }
+  );
+
+  return dataNewsFive;
+}
+
 async function getContentData(locale) {
   const homeData = await strapiApiRequest(
-    `home?locale=${locale}&populate[0]=about&populate[1]=about.social_media_links&populate[2]=about.social_media_links.icon&populate[3]=outstanding&populate[4]=outstanding.items&populate[5]=outstanding.items.icon&populate[6]=news_blog&populate[7]=food_blogs&populate[8]=open_time&populate[9]=open_time.buttons&populate[10]=banner&populate[11]=banner.image
-`
+    `home?locale=${locale}&populate[0]=about&populate[1]=about.social_media_links&populate[2]=about.social_media_links.icon&populate[3]=outstanding&populate[4]=outstanding.items&populate[5]=outstanding.items.icon&populate[6]=news_blog&populate[7]=food_blogs&populate[8]=open_time&populate[9]=open_time.buttons&populate[10]=banner&populate[11]=banner.image`,
+    undefined,
+    undefined,
+    {
+      cache: "force-cache",
+    }
   );
 
   return homeData;
