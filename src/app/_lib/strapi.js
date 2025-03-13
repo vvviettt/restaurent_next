@@ -17,7 +17,7 @@ export const strapiApiRequest = async (
   console.log(url);
 
   if (data) {
-    options.body = JSON.stringify(data); // Chỉ thêm body nếu có dữ liệu
+    options.body = JSON.stringify(data);
   }
 
   try {

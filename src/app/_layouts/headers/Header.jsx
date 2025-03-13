@@ -29,10 +29,10 @@ export const Header = ({ data }) => {
       <nav className={styles.nav}>
         {/* Left Links (Desktop) */}
         <div className={styles.navLinks}>
-          {data.left_menu.map((item) => {
+          {data?.left_menu.map((item) => {
             return (
               <div
-                key={item.id}
+                key={`left_menu-${item.id}`}
                 className={classNames(
                   styles.link,
                   isPathActive(item.link) && styles.activeLink
@@ -55,7 +55,7 @@ export const Header = ({ data }) => {
         <div className={styles.logo}>
           <Link href="/">
             <img
-              src={`${process.env.NEXT_PUBLIC_STRAPI_MEDIA_URL}${data.logo.data.attributes.url}`}
+              src={`${process.env.NEXT_PUBLIC_STRAPI_MEDIA_URL}${data?.logo?.data?.attributes?.url}`}
               className="tst-logo"
               height={60}
               alt={AppData.header.logo.alt}
@@ -65,10 +65,10 @@ export const Header = ({ data }) => {
 
         {/* Right Links (Desktop) */}
         <div className={styles.navLinks}>
-          {data.right_menu.map((item) => {
+          {data?.right_menu?.map((item) => {
             return (
               <div
-                key={item.label}
+                key={`right_menu-${item.id}`}
                 className={classNames(
                   styles.link,
                   isPathActive(item.link) && styles.activeLink
@@ -84,11 +84,11 @@ export const Header = ({ data }) => {
                     className={classNames(styles.subLinks, {
                       [styles.hidden]: !(item.label === isSubOpen),
                     })}
-                    key={item.label}
+                    key={item.id}
                   >
                     {item.sub_menu?.map((child) => (
                       <div
-                        key={`sub-header-${child.label}`}
+                        key={`sub-header-${child.id}`}
                         className={classNames(
                           styles.link,
                           isPathActive(child.link) && styles.activeLink
@@ -110,8 +110,8 @@ export const Header = ({ data }) => {
         {/* Mobile Dropdown Menu */}
         {menuOpen && (
           <div className={styles.mobileMenu}>
-            {[...data.left_menu, ...data.right_menu].map((item) => (
-              <div className={classNames("d-flex flex-column")}>
+            {[...data?.left_menu, ...data?.right_menu].map((item) => (
+              <div key={item.id} className={classNames("d-flex flex-column")}>
                 {item.sub_menu?.length ? (
                   <div
                     className={classNames("d-flex", {
@@ -138,7 +138,7 @@ export const Header = ({ data }) => {
                     className={classNames(styles.subLinks, {
                       [styles.hidden]: !(item.label === isSubOpen),
                     })}
-                    key={item.label}
+                    key={`sub-menu=${item.id}`}
                   >
                     {item.sub_menu?.map((child) => (
                       <div

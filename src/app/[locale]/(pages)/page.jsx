@@ -80,7 +80,7 @@ async function Home() {
 export default Home;
 
 async function getAllPosts() {
-  const allPosts = getSortedPostsData();
+  const allPosts = [];
   return allPosts;
 }
 

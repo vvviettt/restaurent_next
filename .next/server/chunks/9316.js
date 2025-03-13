@@ -1,0 +1,1 @@
+"use strict";exports.id=9316,exports.ids=[9316],exports.modules={39316:e=>{e.exports=JSON.parse('{"header":{"blog":"Blog","blog_food":"Food","blog_news":"News","reservation":"Reservation","home":"Home","menu":"Menu"}}')}};

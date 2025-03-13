@@ -16,7 +16,7 @@ const PagesLayouts = async ({ children }) => {
       {children}
       {/* dynamic content end */}
 
-      <Footer layout={"default"} data={content?.data?.attributes} />
+      <Footer data={content?.data?.attributes} />
     </>
   );
 };
