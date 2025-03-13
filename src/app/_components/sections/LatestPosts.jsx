@@ -20,9 +20,9 @@ const LatestPostsSection = ({ posts, data }) => {
           </div>
           {/* title end */}
         </div>
-        <div className="row flex flex-nowrap latest-post-wrapper">
+        <div className="row flex flex-1 flex-nowrap latest-post-wrapper">
           {posts.slice(0, Data.numOfItems).map((item, key) => (
-            <div className="col-lg-4" key={`latest-posts-item-${key}`}>
+            <div className="col-lg-4 d-flex" key={`latest-posts-item-${key}`}>
               <BlogItem item={item} />
             </div>
           ))}

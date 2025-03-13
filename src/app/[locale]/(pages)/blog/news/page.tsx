@@ -13,6 +13,8 @@ import PopularPosts from "@components/sections/PopularPosts";
 import SubscribeSection from "@components/sections/Subscribe";
 
 import { getPaginatedPostsData, getFeaturedPostsData } from "@library/posts";
+import { strapiApiRequest } from "@/src/app/_lib/strapi";
+import { getLocale } from "next-intl/server";
 
 const BlogPaginated = dynamic(() => import("@components/blog/BlogPaginated"), {
   ssr: false,
@@ -25,9 +27,19 @@ export const metadata = {
   description: AppData.settings.siteDescription,
 };
 
-async function NewsBlog() {
-  const populars = await getAllPupulars();
-  const postsData = await getAllPosts();
+async function NewsBlog({ searchParams }) {
+  const pageSize = 6;
+  const locale = await getLocale();
+  const content = await getContentDataNews(locale, searchParams.page, pageSize);
+  const totalPage = Math.ceil(
+    (content?.meta?.pagination?.total ?? 0) / pageSize
+  );
+  let newBlogData = content.data.map((item) => ({
+    id: item.id,
+    title: item.attributes.title,
+    content: item.attributes.desc,
+    image: item.attributes.thumbnail.data.attributes.url,
+  }));
 
   return (
     <>
@@ -64,13 +76,15 @@ async function NewsBlog() {
                 </div>
               </div>
 
-              <BlogPaginated items={postsData.posts} columns={undefined} />
-              <Pagination
-                currentPage={postsData.currentPage}
-                totalItems={postsData.totalPosts}
-                perPage={AppData.settings.perPage}
-                renderPageLink={(page) => `/blog/page/${page}`}
-              />
+              <BlogPaginated items={newBlogData} columns={undefined} />
+              {totalPage > 1 && (
+                <Pagination
+                  currentPage={content.meta.pagination.page}
+                  totalItems={content.meta.pagination.total}
+                  perPage={pageSize}
+                  renderPageLink={(page) => `/blog/page/${page}`}
+                />
+              )}
               {/* <Divider onlyBottom={0} /> */}
               {/* <Suspense fallback={<div>Loading...</div>}>
                 <PopularPosts posts={populars} />
@@ -86,18 +100,10 @@ async function NewsBlog() {
 }
 export default NewsBlog;
 
-async function getAllPupulars() {
-  const popularsData = await getFeaturedPostsData(PopularsPostsData.featured);
+async function getContentDataNews(locale, page = 1, size) {
+  let newBlogData = await strapiApiRequest(
+    `news-blogs?locale=${locale}&populate[0]=title&populate[2]=content&populate[1]=thumbnail&pagination[page]=${page}&pagination[pageSize]=${size}`
+  );
 
-  return popularsData;
-}
-
-async function getAllPosts() {
-  const { posts, total } = getPaginatedPostsData(AppData.settings.perPage, 1);
-
-  return {
-    posts: posts,
-    totalPosts: total,
-    currentPage: 1,
-  };
+  return newBlogData;
 }

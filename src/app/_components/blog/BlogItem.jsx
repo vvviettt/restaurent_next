@@ -7,12 +7,15 @@ const BlogItem = ({ item, popular }) => {
   return (
     <>
       {/* blog card */}
-      <div className="tst-blog-card tst-mb-60">
+      <div className="tst-blog-card tst-mb-60 flex-1">
         <Link
           href={`/blog/${item.id}`}
           className="tst-cover-frame tst-anima-link"
         >
-          <img src={item.image} alt={item.title} />
+          <img
+            src={`${process.env.NEXT_PUBLIC_STRAPI_MEDIA_URL}${item.image}`}
+            alt={item.title}
+          />
           {/* {popular == 1 ? (
           <div className="tst-card-badge tst-auxiliary-color-1">Popular</div>
           ) : (

@@ -7,7 +7,7 @@ function FoodBlogItem({ item }) {
       <div className="d-flex flex-column align-items-center">
         <div className="menu-item--image">
           <img
-            src={item.image}
+            src={`${process.env.NEXT_PUBLIC_STRAPI_MEDIA_URL}${item.image}`}
             className="img-fluid rounded-fulll ratio-1x1 rounded-circle border menu-img zoom"
             alt="Món ăn"
           />
