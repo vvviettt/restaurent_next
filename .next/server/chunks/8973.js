@@ -1,1 +1,0 @@
-"use strict";exports.id=8973,exports.ids=[8973],exports.modules={38973:(e,t,s)=>{s.r(t),s.d(t,{$$typeof:()=>a,__esModule:()=>o,default:()=>n});let r=(0,s(86843).createProxy)(String.raw`/Users/vanviet/Documents/freelance/langchaiweb/src/app/_components/menu/MenuFiltered.jsx`),{__esModule:o,$$typeof:a}=r,n=r.default}};

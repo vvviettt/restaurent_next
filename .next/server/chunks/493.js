@@ -1,1 +1,0 @@
-"use strict";exports.id=493,exports.ids=[493],exports.modules={70493:e=>{e.exports=JSON.parse('{"header":{"blog":"博客","blog_food":"食物","blog_news":"新闻","reservation":"预订","home":"主页","menu":"菜单"}}')}};

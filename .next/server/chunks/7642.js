@@ -1,1 +1,0 @@
-"use strict";exports.id=7642,exports.ids=[7642],exports.modules={37642:(e,s,t)=>{t.r(s),t.d(s,{$$typeof:()=>a,__esModule:()=>o,default:()=>n});let r=(0,t(86843).createProxy)(String.raw`/Users/vanviet/Documents/freelance/langchaiweb/src/app/_components/menu/MenuGrid.jsx`),{__esModule:o,$$typeof:a}=r,n=r.default}};

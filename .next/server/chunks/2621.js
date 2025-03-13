@@ -1,1 +1,0 @@
-"use strict";exports.id=2621,exports.ids=[2621],exports.modules={62621:(e,s,t)=>{t.r(s),t.d(s,{$$typeof:()=>a,__esModule:()=>o,default:()=>c});let r=(0,t(86843).createProxy)(String.raw`/Users/vanviet/Documents/freelance/langchaiweb/src/app/_components/products/ProductTabs.jsx`),{__esModule:o,$$typeof:a}=r,c=r.default}};

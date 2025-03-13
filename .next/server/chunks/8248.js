@@ -1,1 +1,0 @@
-"use strict";exports.id=8248,exports.ids=[8248],exports.modules={78248:e=>{e.exports=JSON.parse('{"header":{"blog":"B\xe0i viết","blog_food":"M\xf3n ăn","blog_news":"Tin tức","reservation":"Đặt b\xe0n","home":"Trang chủ","menu":"Menu"}}')}};

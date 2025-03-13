@@ -1,1 +1,0 @@
-"use strict";exports.id=458,exports.ids=[458],exports.modules={60458:e=>{e.exports=JSON.parse('{"header":{"blog":"블로그","blog_food":"음식","blog_news":"뉴스","reservation":"예약","home":"홈","menu":"메뉴"}}')}};
