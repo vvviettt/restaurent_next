@@ -29,20 +29,22 @@ async function PostsDetail({ params }) {
   //   postData.author.toLowerCase().replaceAll(" ", "-")
   // );
 
-let singlePostData = {
-  title: postData.attributes?.title || "Không có tiêu đề",
-  date: postData.attributes?.createdAt || "Không có ngày tạo",
-  content: postData.attributes?.content || "Không có nội dung",
-  image: postData.attributes?.thumbnail?.data?.attributes?.url || "",
-}
-
+  if (!postData) {
+    notFound();
+  }
+  let singlePostData = {
+    title: postData?.attributes?.title,
+    date: postData?.attributes?.createdAt,
+    content: postData?.attributes?.content,
+    image: postData?.attributes?.thumbnail?.data?.attributes?.url || "",
+  };
 
   return (
     <>
       <div id="tst-dynamic-banner" className="tst-dynamic-banner">
         <PageBanner
           pageTitle={singlePostData.title}
-          description={singlePostData.content}
+          // description={singlePostData.content}
           breadTitle={0}
         />
       </div>
@@ -57,7 +59,7 @@ let singlePostData = {
                   <div className="tst-post-bottom tst-mb-30">
                     <div className="tst-post-author">
                       {/* <img src={authorData.avatar} alt={postData.author} /> */}
-                      {/* <h6>{postData.author}</h6> */}
+                      {/* <h6>{singlePostData.title}</h6> */}
                     </div>
                     <div className="tst-date">
                       {/* <Date dateString={singlePostData.date} /> */}
@@ -66,7 +68,7 @@ let singlePostData = {
 
                   <div className="tst-about-cover tst-video-cover tst-mb-60">
                     <img
-                     src={`${process.env.NEXT_PUBLIC_STRAPI_MEDIA_URL}${singlePostData.image}`}
+                      src={`${process.env.NEXT_PUBLIC_STRAPI_MEDIA_URL}${singlePostData.image}`}
                       alt={singlePostData.title}
                       className="tst-cover animateme"
                       data-when="span"
@@ -79,7 +81,9 @@ let singlePostData = {
 
                   <div
                     className="tst-text"
-                    dangerouslySetInnerHTML={{ __html: postData.contentHtml||'' }}
+                    dangerouslySetInnerHTML={{
+                      __html: singlePostData.content || "",
+                    }}
                   />
 
                   <div className="tst-spacer"></div>
@@ -174,7 +178,7 @@ let singlePostData = {
 
                   {/* <div className="tst-spacer"></div> */}
 
-                  <h5 className="tst-mb-60">Write a comment</h5>
+                  {/* <h5 className="tst-mb-60">Write a comment</h5>
 
                   <form className="text-center">
                     <textarea rows="5" placeholder="Message"></textarea>
@@ -183,14 +187,14 @@ let singlePostData = {
                     <button className="tst-btn" type="submit">
                       Write a comment
                     </button>
-                  </form>
+                  </form> */}
                 </div>
               </div>
 
-              <Divider onlyBottom={0} />
+              {/* <Divider onlyBottom={0} />
               <Suspense fallback={<div>Loading...</div>}>
                 <PopularPosts posts={populars} />
-              </Suspense>
+              </Suspense> */}
             </div>
           </div>
         </div>
@@ -222,12 +226,12 @@ async function getAllPupulars() {
 //   }
 // }
 
-async function getSinglePostData(slug) {  
-  let data =  await strapiApiRequest(
+async function getSinglePostData(slug) {
+  let data = await strapiApiRequest(
     `food-blog?filters[slug][$eq]=${slug}&locale=vi&populate[0]=title&populate[1]=thumbnail&populate[2]=content`
   );
-  
-  return data.data[0]
+
+  return data.data[0];
 }
 
 async function getSingleAuthorData(author_id) {

@@ -1,3 +1,4 @@
+import { Link } from "@/src/i18n/navigation";
 import React from "react";
 
 const FoodBlogs = ({ posts, data }) => {
@@ -13,7 +14,10 @@ const FoodBlogs = ({ posts, data }) => {
       </div>
       <div className="row tst-feature-box pt-4">
         {posts.map((item) => (
-          <a className="col-9 col-md-4 col-lg-3" href={`/blog/food/${item.slug}`}>
+          <Link
+            className="col-9 col-md-4 col-lg-3"
+            href={`/blog/food/${item.slug}`}
+          >
             <div className="menu-item">
               <div className="menu-item--image">
                 <img
@@ -26,7 +30,7 @@ const FoodBlogs = ({ posts, data }) => {
                 <h5>{item.name}</h5>
               </div>
             </div>
-          </a>
+          </Link>
         ))}
       </div>
     </div>

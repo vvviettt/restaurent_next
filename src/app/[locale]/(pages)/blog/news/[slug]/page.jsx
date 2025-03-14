@@ -25,15 +25,16 @@ async function PostsDetail({ params }) {
   const { slug } = params;
   const populars = await getAllPupulars();
   const postData = await getSinglePostData(slug);
+  if (!postData) {
+    notFound();
+  }
 
-
-let singlePostData = {
-  title: postData.attributes?.title || "Không có tiêu đề",
-  date: postData.attributes?.createdAt || "Không có ngày tạo",
-  content: postData.attributes?.content || "Không có nội dung",
-  image: postData.attributes?.thumbnail?.data?.attributes?.url || "",
-}
-
+  let singlePostData = {
+    title: postData.attributes?.title || "Không có tiêu đề",
+    date: postData.attributes?.createdAt || "Không có ngày tạo",
+    content: postData.attributes?.content || "Không có nội dung",
+    image: postData.attributes?.thumbnail?.data?.attributes?.url || "",
+  };
 
   return (
     <>
@@ -54,8 +55,7 @@ let singlePostData = {
                 <div className="col-lg-8">
                   <div className="tst-post-bottom tst-mb-30">
                     <div className="tst-post-author">
-                      {/* <img src={authorData.avatar} alt={postData.author} /> */}
-                      {/* <h6>{postData.author}</h6> */}
+                      {/* <h6>{singlePostData.title}</h6> */}
                     </div>
                     <div className="tst-date">
                       <Date dateString={singlePostData.date} />
@@ -64,7 +64,7 @@ let singlePostData = {
 
                   <div className="tst-about-cover tst-video-cover tst-mb-60">
                     <img
-                     src={`${process.env.NEXT_PUBLIC_STRAPI_MEDIA_URL}${singlePostData.image}`}
+                      src={`${process.env.NEXT_PUBLIC_STRAPI_MEDIA_URL}${singlePostData.image}`}
                       alt={singlePostData.title}
                       className="tst-cover animateme"
                       data-when="span"
@@ -77,7 +77,9 @@ let singlePostData = {
 
                   <div
                     className="tst-text"
-                    dangerouslySetInnerHTML={{ __html: postData.contentHtml||'' }}
+                    dangerouslySetInnerHTML={{
+                      __html: postData.contentHtml || "",
+                    }}
                   />
 
                   <div className="tst-spacer"></div>
@@ -171,24 +173,13 @@ let singlePostData = {
                   </ul>
 
                   {/* <div className="tst-spacer"></div> */}
-
-                  <h5 className="tst-mb-60">Write a comment</h5>
-
-                  <form className="text-center">
-                    <textarea rows="5" placeholder="Message"></textarea>
-                    <input type="text" placeholder="Name" />
-                    <input type="text" placeholder="Email" />
-                    <button className="tst-btn" type="submit">
-                      Write a comment
-                    </button>
-                  </form>
                 </div>
               </div>
 
-              <Divider onlyBottom={0} />
+              {/* <Divider onlyBottom={0} />
               <Suspense fallback={<div>Loading...</div>}>
                 <PopularPosts posts={populars} />
-              </Suspense>
+              </Suspense> */}
             </div>
           </div>
         </div>
@@ -210,23 +201,9 @@ async function getAllPupulars() {
   return popularsData;
 }
 
-// async function getSinglePostData(params) {
-//   const postData = await getPostData(params.id);
-
-//   if (!postData) {
-//     notFound();
-//   } else {
-//     return postData;
-//   }
-// }
-
 async function getSinglePostData(slug) {
-  let data = await strapiApiRequest(`news-blogs/${slug}?locale=vi&populate[0]=title&populate[1]=thumbnail&populate[2]=content`)
-  return data.data[0]
-}
-
-async function getSingleAuthorData(author_id) {
-  const authorData = await getAuthorData(author_id);
-
-  return authorData;
+  let data = await strapiApiRequest(
+    `news-blogs?filters[slug][$eq]=${slug}&locale=vi&populate[0]=title&populate[1]=thumbnail&populate[2]=content`
+  );
+  return data.data[0];
 }
