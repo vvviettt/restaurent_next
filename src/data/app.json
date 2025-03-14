@@ -1,7 +1,7 @@
 {
   "settings": {
-    "siteName": "Tastycs",
-    "siteDescription": "Cafe & Restaurant React Next.JS Template",
+    "siteName": "Làng Chài Seafoods",
+    "siteDescription": "The fishing restaurant",
     "bgImage": "/img/bg2.JPG",
     "formspreeURL": "https://formspree.io/f/YOUR_FORM_ID",
     "mailchimp": {

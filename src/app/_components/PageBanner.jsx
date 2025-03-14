@@ -52,10 +52,10 @@ const PageBanner = ({
       <div className="tst-banner tst-small-banner">
         {showMap ? (
           <div className="tst-cover-frame">
-            <img 
+            {/* <img 
             style={{width: '100%'}}
-            src="https://api.langchaivn.com/uploads/Screenshot_2025_03_14_at_12_52_23_226d288ca5.png"/>
-            <div className="tst-overlay"></div>
+            src="https://api.langchaivn.com/uploads/z6406571711496_e5e2c2f07eb455327d4b0c67da1a0041_1_2140f2296e.jpg"/>
+            <div className="tst-overlay"></div> */}
           </div>
         ) : (
           <div className="tst-cover-frame">
