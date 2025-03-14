@@ -19,23 +19,29 @@ import Divider from "@layouts/divider/Index";
 
 import PopularsPostsData from "@data/sections/popular-posts.json";
 import CommentsData from "@data/comments.json";
+import { strapiApiRequest } from "@/src/app/_lib/strapi";
 
 async function PostsDetail({ params }) {
+  const { slug } = params;
   const populars = await getAllPupulars();
-  const postData = await getSinglePostData(params);
-  const authorData = await getSingleAuthorData(
-    postData.author.toLowerCase().replaceAll(" ", "-")
-  );
+  const postData = await getSinglePostData(slug);
+
+
+let singlePostData = {
+  title: postData.attributes?.title || "Không có tiêu đề",
+  date: postData.attributes?.createdAt || "Không có ngày tạo",
+  content: postData.attributes?.content || "Không có nội dung",
+  image: postData.attributes?.thumbnail?.data?.attributes?.url || "",
+}
+
 
   return (
     <>
       <div id="tst-dynamic-banner" className="tst-dynamic-banner">
         <PageBanner
-          pageTitle={postData.title}
-          description={
-            "Porro eveniet, autem ipsam corrupti consectetur cum. <br>Repudiandae dignissimos fugiat sit nam."
-          }
-          breadTitle={postData.categories[0]}
+          pageTitle={singlePostData.title}
+          description={singlePostData.content}
+          breadTitle={0}
         />
       </div>
       <div id="tst-dynamic-content" className="tst-dynamic-content">
@@ -48,18 +54,18 @@ async function PostsDetail({ params }) {
                 <div className="col-lg-8">
                   <div className="tst-post-bottom tst-mb-30">
                     <div className="tst-post-author">
-                      <img src={authorData.avatar} alt={postData.author} />
-                      <h6>{postData.author}</h6>
+                      {/* <img src={authorData.avatar} alt={postData.author} /> */}
+                      {/* <h6>{postData.author}</h6> */}
                     </div>
                     <div className="tst-date">
-                      <Date dateString={postData.date} />
+                      <Date dateString={singlePostData.date} />
                     </div>
                   </div>
 
                   <div className="tst-about-cover tst-video-cover tst-mb-60">
                     <img
-                      src={postData.image}
-                      alt={postData.title}
+                     src={`${process.env.NEXT_PUBLIC_STRAPI_MEDIA_URL}${singlePostData.image}`}
+                      alt={singlePostData.title}
                       className="tst-cover animateme"
                       data-when="span"
                       data-from="-1"
@@ -71,7 +77,7 @@ async function PostsDetail({ params }) {
 
                   <div
                     className="tst-text"
-                    dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
+                    dangerouslySetInnerHTML={{ __html: postData.contentHtml||'' }}
                   />
 
                   <div className="tst-spacer"></div>
@@ -79,7 +85,7 @@ async function PostsDetail({ params }) {
                   <div className="row">
                     <div className="col-lg-6">
                       <div className="tst-categories">
-                        <span>Categories:</span>
+                        {/* <span>Categories:</span>
                         {postData.categories.map((category, key) => (
                           <Link
                             href={`/blog/category/${category
@@ -89,10 +95,10 @@ async function PostsDetail({ params }) {
                           >
                             {category}
                           </Link>
-                        ))}
+                        ))} */}
                       </div>
                     </div>
-                    <div className="col-lg-6 text-right">
+                    {/* <div className="col-lg-6 text-right">
                       <div className="tst-tags">
                         <span>Tags:</span>
                         {postData.tags.map((tag, key) => (
@@ -106,15 +112,15 @@ async function PostsDetail({ params }) {
                           </Link>
                         ))}
                       </div>
-                    </div>
+                    </div> */}
                   </div>
 
-                  <div className="tst-spacer"></div>
+                  {/* <div className="tst-spacer"></div>
 
-                  <h5 className="tst-mb-60">Comments</h5>
+                  <h5 className="tst-mb-60">Comments</h5> */}
 
                   <ul className="tst-comments-list">
-                    {CommentsData[postData.id].map((item, key) => (
+                    {/* {CommentsData[postData.id].map((item, key) => (
                       <li key={`comment-item-${key}`}>
                         <div className="tst-comment-avatar">
                           <img src={item.avatar} alt={item.name} />
@@ -161,10 +167,10 @@ async function PostsDetail({ params }) {
                           </ul>
                         )}
                       </li>
-                    ))}
+                    ))} */}
                   </ul>
 
-                  <div className="tst-spacer"></div>
+                  {/* <div className="tst-spacer"></div> */}
 
                   <h5 className="tst-mb-60">Write a comment</h5>
 
@@ -204,14 +210,19 @@ async function getAllPupulars() {
   return popularsData;
 }
 
-async function getSinglePostData(params) {
-  const postData = await getPostData(params.id);
+// async function getSinglePostData(params) {
+//   const postData = await getPostData(params.id);
 
-  if (!postData) {
-    notFound();
-  } else {
-    return postData;
-  }
+//   if (!postData) {
+//     notFound();
+//   } else {
+//     return postData;
+//   }
+// }
+
+async function getSinglePostData(slug) {
+  let data = await strapiApiRequest(`news-blogs/${slug}?locale=vi&populate[0]=title&populate[1]=thumbnail&populate[2]=content`)
+  return data.data[0]
 }
 
 async function getSingleAuthorData(author_id) {

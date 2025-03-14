@@ -9,7 +9,7 @@ const BlogItem = ({ item, popular }) => {
       {/* blog card */}
       <div className="tst-blog-card tst-mb-60 flex-1">
         <Link
-          href={`/blog/${item.id}`}
+          href={`/blog/news/${item.slug}`}
           className="tst-cover-frame tst-anima-link"
         >
           <img
@@ -24,7 +24,7 @@ const BlogItem = ({ item, popular }) => {
         </Link>
         <div className="tst-descr">
           <h5 className="tst-mb-15">
-            <a href={`/blog/${item.id}`} className="tst-anima-link">
+            <a href={`/blog/news/${item.slug}`} className="tst-anima-link">
               {item.title}
             </a>
           </h5>
