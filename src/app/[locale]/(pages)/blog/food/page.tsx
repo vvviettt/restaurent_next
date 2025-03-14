@@ -39,6 +39,7 @@ async function FoodBlog({ searchParams }) {
     id: item.id,
     name: item.attributes.title,
     image: item.attributes.thumbnail.data.attributes.formats.thumbnail.url,
+    slug : item.attributes.slug
   }));
   return (
     <>

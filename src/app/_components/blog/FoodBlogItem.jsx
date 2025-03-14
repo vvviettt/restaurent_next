@@ -3,7 +3,7 @@ import React from "react";
 
 function FoodBlogItem({ item }) {
   return (
-    <Link alt="" className="col-9 col-md-4 col-lg-3 " href={`/blog/${item.id}`}>
+    <Link alt="" className="col-9 col-md-4 col-lg-3 " href={`/blog/food/${item.slug}`}>
       <div className="d-flex flex-column align-items-center">
         <div className="menu-item--image">
           <img

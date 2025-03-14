@@ -13,7 +13,7 @@ const FoodBlogs = ({ posts, data }) => {
       </div>
       <div className="row tst-feature-box pt-4">
         {posts.map((item) => (
-          <a className="col-9 col-md-4 col-lg-3" href={`/blog/${item.id}`}>
+          <a className="col-9 col-md-4 col-lg-3" href={`/blog/food/${item.slug}`}>
             <div className="menu-item">
               <div className="menu-item--image">
                 <img
