@@ -7,7 +7,6 @@ import Divider from "@layouts/divider/Index";
 
 import PageBanner from "@components/PageBanner";
 import ContactInfoSection from "@components/sections/ContactInfo";
-import ReservationOpenTableSection from "@components/sections/ReservationOpenTable";
 
 export const metadata = {
     title: {
