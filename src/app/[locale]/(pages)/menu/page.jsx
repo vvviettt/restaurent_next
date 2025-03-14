@@ -9,38 +9,50 @@ import ScrollHint from "@layouts/scroll-hint/Index";
 
 import PageBanner from "@components/PageBanner";
 import CallToActionTwoSection from "@components/sections/CallToActionTwo";
+import { strapiApiRequest } from "@/src/app/_lib/strapi";
+import { getLocale } from "next-intl/server";
 
-const MenuFiltered = dynamic( () => import("@components/menu/MenuFiltered"), { ssr: false } );
-const ProductsSlider = dynamic( () => import("@components/sliders/Products"), { ssr: false } );
+const MenuFiltered = dynamic(() => import("@components/menu/MenuFiltered"), {
+  ssr: false,
+});
+const ProductsSlider = dynamic(() => import("@components/sliders/Products"), {
+  ssr: false,
+});
 
 export const metadata = {
   title: {
-		default: "Menu",
-	},
+    default: "Menu",
+  },
   description: AppData.settings.siteDescription,
-}
+};
 
-const Menu1 = () => {
+const MenuPage = async ({}) => {
+  const locale = await getLocale();
+  const menu = await getMenu(locale);
+
   return (
     <>
       <div id="tst-dynamic-banner" className="tst-dynamic-banner">
-        <PageBanner pageTitle={"Discover Our menu"} description={"Quaerat debitis, vel, sapiente dicta sequi <br>labore porro pariatur harum expedita."} breadTitle={"Menu"} />
+        <PageBanner
+          pageTitle={"Discover Our menu"}
+          description={
+            "Quaerat debitis, vel, sapiente dicta sequi <br>labore porro pariatur harum expedita."
+          }
+          breadTitle={"Menu"}
+        />
       </div>
-      
+
       <div id="tst-dynamic-content" className="tst-dynamic-content">
         <div className="tst-content-frame">
           <div className="tst-content-box">
             <div className="container tst-p-60-0">
               <ScrollHint />
 
-              <MenuFiltered
-                categories={MenuData.categories} 
-              />
-
+              <MenuFiltered categories={menu?.data ?? []} />
             </div>
           </div>
         </div>
-        <CallToActionTwoSection />
+        {/* <CallToActionTwoSection />
         <div className="tst-content-frame">
           <div className="tst-content-box">
             <div className="container tst-p-60-60">
@@ -64,9 +76,16 @@ const Menu1 = () => {
 
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );
 };
-export default Menu1;
+export default MenuPage;
+
+async function getMenu(locale) {
+  const data = await strapiApiRequest(
+    `manu-categories?locale=${locale}&populate=images`
+  );
+  return data;
+}

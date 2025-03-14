@@ -8,6 +8,8 @@ export const strapiApiRequest = async (
   ops = {}
 ) => {
   const url = `${API_BASE_URL}${endpoint}`;
+  console.log(url);
+
   const options = {
     method,
     headers: {

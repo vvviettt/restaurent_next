@@ -85,8 +85,8 @@ marcup
 -------------------------*/
 .tst-app {
   width: 100%;
+  max-width: 100vw;
   position: relative;
-  overflow: hidden;
 }
 
 .tst-content-frame {
