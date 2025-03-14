@@ -43,20 +43,11 @@ async function NewsBlog({ searchParams }) {
 
   return (
     <>
-      <div id="tst-dynamic-banner" className="tst-dynamic-banner">
-        <PageBanner
-          pageTitle={"Our Blog"}
-          description={
-            "Porro eveniet, autem ipsam corrupti consectetur cum. <br>Repudiandae dignissimos fugiat sit nam."
-          }
-          breadTitle={"News Blog"}
-        />
-      </div>
       <div id="tst-dynamic-content" className="tst-dynamic-content">
         <div className="tst-content-frame">
           <div className="tst-content-box">
             <div className="container tst-p-60-60">
-              <ScrollHint />
+              {/* <ScrollHint /> */}
 
               <div className="row">
                 <div className="col-lg-12">
