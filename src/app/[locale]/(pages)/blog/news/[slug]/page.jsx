@@ -20,11 +20,13 @@ import Divider from "@layouts/divider/Index";
 import PopularsPostsData from "@data/sections/popular-posts.json";
 import CommentsData from "@data/comments.json";
 import { strapiApiRequest } from "@/src/app/_lib/strapi";
+import { getLocale } from "next-intl/server";
 
 async function PostsDetail({ params }) {
   const { slug } = params;
   const populars = await getAllPupulars();
-  const postData = await getSinglePostData(slug);
+  const locale = await getLocale();
+  const postData = await getSinglePostData(slug, locale);
   if (!postData) {
     notFound();
   }
@@ -201,9 +203,9 @@ async function getAllPupulars() {
   return popularsData;
 }
 
-async function getSinglePostData(slug) {
+async function getSinglePostData(slug, locale) {
   let data = await strapiApiRequest(
-    `news-blogs?filters[slug][$eq]=${slug}&locale=vi&populate[0]=title&populate[1]=thumbnail&populate[2]=content`
+    `news-blogs?filters[slug][$eq]=${slug}&locale=${locale}&populate[0]=title&populate[1]=thumbnail&populate[2]=content`
   );
   return data.data[0];
 }
