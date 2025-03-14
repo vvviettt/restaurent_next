@@ -20,7 +20,8 @@ const Reservation = () => {
   return (
     <>
         <div id="tst-dynamic-banner" className="tst-dynamic-banner">
-            <PageBanner pageTitle={"Reservation"} description={"Quaerat debitis, vel, sapiente dicta sequi <br>labore porro pariatur harum expedita."} breadTitle={"Table Reservation"} showMap={1} />
+            <PageBanner pageTitle={"Đặt chỗ"} 
+            description={"Chúng tôi có diện tích tầng 1 và tầng 2 có thể chứa khoảng 500 người, cùng với nhiều phòng riêng để cung cấp không gian riêng tư."} breadTitle={"Đặt bàn"} showMap={1} />
         </div>
         <div id="tst-dynamic-content" className="tst-dynamic-content">
             <div className="tst-content-frame">

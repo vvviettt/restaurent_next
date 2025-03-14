@@ -25,22 +25,23 @@ const ReservationForm = () => {
             const status = document.getElementById("reservationFormStatus");
             const data = new FormData();
 
-            data.append('first_name', values.first_name);
-            data.append('last_name', values.last_name);
+            data.append('name', values.last_name);
             data.append('email', values.email);
             data.append('person', values.person);
-            data.append('time', values.time);
-            data.append('date', values.date);
+            data.append('time', values.date);
+            // data.append('date', values.date);
             data.append('message', values.message);
 
-            fetch(form.action, {
+            fetch('https://api.langchaivn.com/api/booking/createBooking', {
                 method: 'POST',
                 body: data,
                 headers: {
                     'Accept': 'application/json'
                 }
             }).then(response => {
+                console.log('response ', response);
                 if (response.ok) {
+                    console.log('ok');
                     status.innerHTML = "<h5>Thanks for your submission!</h5>"
                     form.reset()
                 } else {
@@ -71,7 +72,7 @@ const ReservationForm = () => {
         }) => (
         <form onSubmit={handleSubmit} id="reservationForm" action={AppData.settings.formspreeURL}>
             <div className="row">
-                <div className="col-6 col-md-4">
+                {/* <div className="col-6 col-md-4">
                     <input
                         type="text" 
                         placeholder="First Name"
@@ -81,11 +82,11 @@ const ReservationForm = () => {
                         onBlur={handleBlur}
                         value={values.first_name} 
                     />
-                </div>
+                </div> */}
                 <div className="col-6 col-md-4">
                     <input
                         type="text" 
-                        placeholder="Last Name"
+                        placeholder="Name"
                         name="last_name" 
                         required="required" 
                         onChange={handleChange}

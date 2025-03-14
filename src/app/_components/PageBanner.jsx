@@ -41,9 +41,9 @@ const PageBanner = ({
   useEffect(() => {
     ScrollAnimation();
 
-    if (showMap) {
-      mapboxInit();
-    }
+    // if (showMap) {
+    //   mapboxInit();
+    // }
   }, []);
 
   return (
@@ -52,23 +52,10 @@ const PageBanner = ({
       <div className="tst-banner tst-small-banner">
         {showMap ? (
           <div className="tst-cover-frame">
-            <div className="tst-map-frame tst-parallax">
-              <div
-                id="map"
-                className={`tst-map ${mapLock ? "tst-active" : ""}`}
-              />
-            </div>
-            <div
-              className={`tst-overlay tst-with-map ${
-                mapLock ? "tst-active" : ""
-              }`}
-            ></div>
-            <div
-              className={`tst-lock ${mapLock ? "tst-active" : ""}`}
-              onClick={() => setMapLock(!mapLock)}
-            >
-              <i className={`fas ${mapLock ? "fa-unlock" : "fa-lock"}`} />
-            </div>
+            <img 
+            style={{width: '100%'}}
+            src="https://api.langchaivn.com/uploads/Screenshot_2025_03_14_at_12_52_23_226d288ca5.png"/>
+            <div className="tst-overlay"></div>
           </div>
         ) : (
           <div className="tst-cover-frame">
@@ -110,7 +97,7 @@ const PageBanner = ({
                   className="tst-text tst-text-shadow tst-text-lg tst-white-2 tst-mb-30"
                   dangerouslySetInnerHTML={{ __html: description }}
                 />
-                <ul className="tst-breadcrumbs">
+                {/* <ul className="tst-breadcrumbs">
                   <li>
                     <Link href="/" className="tst-anima-link">
                       Home
@@ -137,7 +124,7 @@ const PageBanner = ({
                   <li className="tst-active">
                     <a dangerouslySetInnerHTML={{ __html: clearBreadTitle }} />
                   </li>
-                </ul>
+                </ul> */}
               </div>
             </div>
           </div>

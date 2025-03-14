@@ -28,7 +28,7 @@ const Reservation2 = () => {
                     <div className="container tst-p-60-60">
                         <ScrollHint />
 
-                        <ReservationOpenTableSection />
+                        {/* <ReservationOpenTableSection /> */}
                         <Divider onlyBottom={0} />
                         <ContactInfoSection />
                         

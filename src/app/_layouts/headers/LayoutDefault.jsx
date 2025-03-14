@@ -59,27 +59,7 @@ const DefaultHeader = ({ data }) => {
       </div>
       {/* top bar frame */}
       {/* popup */}
-      <div className={`tst-popup-bg ${reservationPopup ? "tst-active" : ""}`}>
-        <div className="tst-popup-frame">
-          <div className="tst-popup-body">
-            <div
-              className="tst-close-popup"
-              onClick={() => setReservationPopup(!reservationPopup)}
-            >
-              <i className="fas fa-times"></i>
-            </div>
-
-            {/* title */}
-            <div className="text-center">
-              <div className="tst-suptitle tst-suptitle-center"></div>
-              <h4 className="tst-mb-10">Table Reservation</h4>
-            </div>
-            {/* title end */}
-
-            <ReservationForm />
-          </div>
-        </div>
-      </div>
+      
       {/* popup end */}
     </>
   );

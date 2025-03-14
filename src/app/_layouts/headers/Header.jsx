@@ -22,7 +22,6 @@ export const Header = ({ data }) => {
       (currentPath.endsWith(path) == 1 && path !== "/") || currentPath === path
     );
   };
-  console.log(data);
 
   return (
     <header className={classNames(styles.header)}>
