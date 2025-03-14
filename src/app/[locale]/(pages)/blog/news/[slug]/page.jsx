@@ -28,7 +28,7 @@ async function PostsDetail({ params }) {
   const locale = await getLocale();
   const postData = await getSinglePostData(slug, locale);
   if (!postData) {
-    notFound();
+    return notFound();
   }
 
   let singlePostData = {
@@ -190,12 +190,6 @@ async function PostsDetail({ params }) {
   );
 }
 export default PostsDetail;
-
-export async function generateStaticParams() {
-  const paths = getAllPostsIds();
-
-  return paths;
-}
 
 async function getAllPupulars() {
   const popularsData = await getFeaturedPostsData(PopularsPostsData.featured);

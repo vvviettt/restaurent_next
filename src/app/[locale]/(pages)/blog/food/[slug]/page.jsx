@@ -28,7 +28,7 @@ async function PostsDetail({ params }) {
   const postData = await getSinglePostData(slug, locale);
 
   if (!postData) {
-    notFound();
+    return notFound();
   }
   let singlePostData = {
     title: postData?.attributes?.title,
@@ -202,32 +202,14 @@ async function PostsDetail({ params }) {
 }
 export default PostsDetail;
 
-export async function generateStaticParams() {
-  const paths = getAllPostsIds();
-
-  return paths;
-}
-
-async function getAllPupulars() {
-  const popularsData = await getFeaturedPostsData(PopularsPostsData.featured);
-
-  return popularsData;
-}
-
-// async function getSinglePostData(params) {
-//   const postData = await getPostData(params.id);
-
-//   if (!postData) {
-//     notFound();
-//   } else {
-//     return postData;
-//   }
-// }
-
 async function getSinglePostData(slug, locale) {
-  let data = await strapiApiRequest(
-    `food-blog?filters[slug][$eq]=${slug}&locale=${locale}&populate[0]=title&populate[1]=thumbnail&populate[2]=content`
-  );
+  try {
+    let data = await strapiApiRequest(
+      `food-blog?filters[slug][$eq]=${slug}&locale=${locale}&populate[0]=title&populate[1]=thumbnail&populate[2]=content`
+    );
 
-  return data.data[0];
+    return data.data[0];
+  } catch (error) {
+    return null;
+  }
 }
