@@ -70,7 +70,7 @@ async function FoodBlog({ searchParams }) {
                 </div>
               </div>
 
-              <FoodBlogs posts={foodBlogData.reverse()} />
+              <FoodBlogs posts={foodBlogData} />
               {totalPage > 1 && (
                 <Pagination
                   currentPage={

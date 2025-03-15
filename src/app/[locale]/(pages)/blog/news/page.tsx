@@ -68,7 +68,7 @@ async function NewsBlog({ searchParams }) {
                 </div>
               </div>
 
-              <BlogPaginated items={newBlogData} columns={undefined} />
+              <BlogPaginated items={newBlogData.reverse()} columns={undefined} />
               {totalPage > 1 && (
                 <Pagination
                   currentPage={content.meta.pagination.page}
