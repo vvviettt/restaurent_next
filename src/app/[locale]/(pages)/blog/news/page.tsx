@@ -1,18 +1,7 @@
-import React, { Suspense } from "react";
+import React from "react";
 import dynamic from "next/dynamic";
-
 import AppData from "@data/app.json";
-import PopularsPostsData from "@data/sections/popular-posts.json";
-
-import ScrollHint from "@layouts/scroll-hint/Index";
-import Divider from "@layouts/divider/Index";
-
 import Pagination from "@components/Pagination";
-import PageBanner from "@components/PageBanner";
-import PopularPosts from "@components/sections/PopularPosts";
-import SubscribeSection from "@components/sections/Subscribe";
-
-import { getPaginatedPostsData, getFeaturedPostsData } from "@library/posts";
 import { strapiApiRequest } from "@/src/app/_lib/strapi";
 import { getLocale } from "next-intl/server";
 
@@ -30,6 +19,7 @@ export const metadata = {
 async function NewsBlog({ searchParams }) {
   const pageSize = 6;
   const locale = await getLocale();
+  const pageContent = await getPageContentData(locale);
   const content = await getContentDataNews(locale, searchParams.page, pageSize);
   const totalPage = Math.ceil(
     (content?.meta?.pagination?.total ?? 0) / pageSize
@@ -44,7 +34,7 @@ async function NewsBlog({ searchParams }) {
 
   return (
     <>
-    <div style={{height: "150px"}}></div>
+      <div style={{ height: "150px" }}></div>
       <div id="tst-dynamic-content" className="tst-dynamic-content">
         <div className="tst-content-frame">
           <div className="tst-content-box">
@@ -59,20 +49,27 @@ async function NewsBlog({ searchParams }) {
                       className="tst-suptitle tst-suptitle-center tst-mb-15"
                       style={{ marginTop: "30px" }}
                     >
-                      Newsletter
+                      {pageContent?.data?.attributes?.name}
                     </div>
-                    <h3 className="tst-mb-30">Latest publications</h3>
-                    <p className="tst-text tst-mb-60">
-                      Porro eveniet, autem ipsam corrupti consectetur cum.{" "}
-                      <br />
-                      Repudiandae dignissimos fugiat sit nam.
-                    </p>
+                    <h3 className="tst-mb-30">
+                      {" "}
+                      {pageContent?.data?.attributes?.title}
+                    </h3>
+                    <p
+                      className="tst-text tst-mb-60"
+                      dangerouslySetInnerHTML={{
+                        __html: pageContent?.data?.attributes?.desc ?? "",
+                      }}
+                    />
                   </div>
                   {/* title end */}
                 </div>
               </div>
 
-              <BlogPaginated items={newBlogData.reverse()} columns={undefined} />
+              <BlogPaginated
+                items={newBlogData.reverse()}
+                columns={undefined}
+              />
               {totalPage > 1 && (
                 <Pagination
                   currentPage={content.meta.pagination.page}
@@ -81,12 +78,6 @@ async function NewsBlog({ searchParams }) {
                   renderPageLink={(page) => `/blog/page/${page}`}
                 />
               )}
-              {/* <Divider onlyBottom={0} /> */}
-              {/* <Suspense fallback={<div>Loading...</div>}>
-                <PopularPosts posts={populars} />
-              </Suspense>
-              <Divider onlyBottom={0} />
-              <SubscribeSection /> */}
             </div>
           </div>
         </div>
@@ -102,4 +93,19 @@ async function getContentDataNews(locale, page = 1, size) {
   );
 
   return newBlogData;
+}
+
+async function getPageContentData(locale) {
+  let content = await strapiApiRequest(
+    `news-blog-content?locale=${locale}&populate=*`,
+    undefined,
+    undefined
+    // {
+    //   next: {
+    //     revalidate: 60 * 10,
+    //   },
+    // }
+  );
+
+  return content;
 }

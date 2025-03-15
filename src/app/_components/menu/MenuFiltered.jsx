@@ -18,8 +18,6 @@ const MenuFiltered = ({ heading = 0, categories }) => {
     observerRef.current = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          console.log(entry);
-
           if (entry.isIntersecting) {
             setVisibleId(entry.target.id);
           }
@@ -40,8 +38,6 @@ const MenuFiltered = ({ heading = 0, categories }) => {
       observerRef.current?.disconnect();
     };
   }, []);
-
-  console.log(visibleId);
 
   return (
     <>

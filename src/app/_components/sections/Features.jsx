@@ -1,11 +1,10 @@
-import Data from "@data/sections/features.json";
 import Image from "next/image";
 
 const FeaturesOneSection = ({ data }) => {
   return (
     <>
       {/* features */}
-      <div className="row">
+      <div className="column">
         <div className="col-lg-12">
           {/* title */}
           <div className="text-center">
@@ -17,9 +16,9 @@ const FeaturesOneSection = ({ data }) => {
           </div>
           {/* title end */}
         </div>
-        <div className="row tst-feature-box">
+        <div className="row flex-1 tst-feature-box">
           {data?.items?.map((item) => (
-            <div className="col-lg-4" key={`features-item-${item.id}`}>
+            <div className="col-lg-4 flex-1" key={`features-item-${item.id}`}>
               {/* icon box */}
               <div className="tst-icon-box tst-mb-60">
                 <Image
