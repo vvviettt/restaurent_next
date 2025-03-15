@@ -86,7 +86,7 @@ const MenuFiltered = ({ heading = 0, categories }) => {
           {categories.map((category, category_key) => {
             return (
               <div key={category.id} id={`ctg-image-${category.id}`}>
-                {category.attributes.images.data.map((image) => {
+                {category.attributes?.images?.data?.map((image) => {
                   return (
                     <img
                       loading="lazy"

@@ -43,7 +43,7 @@ async function Home() {
     id: item.id,
     name: item.attributes.title,
     image: item.attributes.thumbnail.data.attributes.url,
-    slug:item.attributes.slug
+    slug: item.attributes.slug,
   }));
 
   let newBlogData = newsData.data.map((item) => ({
@@ -51,7 +51,7 @@ async function Home() {
     title: item.attributes.title,
     content: item.attributes.desc,
     image: item.attributes.thumbnail.data.attributes.url,
-    slug:item.attributes.slug
+    slug: item.attributes.slug,
   }));
 
   return (
@@ -131,7 +131,7 @@ async function getContentData(locale) {
     undefined,
     undefined,
     {
-      cache: "force-cache",
+      next: { revalidate: 60 * 10 },
     }
   );
 

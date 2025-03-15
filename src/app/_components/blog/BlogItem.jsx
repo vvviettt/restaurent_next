@@ -4,6 +4,8 @@ import { Link, usePathname } from "@i18n/navigation";
 import Date from "@library/date";
 
 const BlogItem = ({ item, popular }) => {
+  console.log(item);
+
   return (
     <>
       {/* blog card */}

@@ -39,24 +39,27 @@ async function FoodBlog({ searchParams }) {
     id: item.id,
     name: item.attributes.title,
     image: item.attributes.thumbnail.data.attributes.formats.thumbnail.url,
-    slug : item.attributes.slug
+    slug: item.attributes.slug,
   }));
   return (
     <>
       <div id="tst-dynamic-banner" className="tst-dynamic-banner">
-        <div style={{height: "150px"}}></div>
+        <div style={{ height: "150px" }}></div>
       </div>
       <div id="tst-dynamic-content" className="tst-dynamic-content">
         <div className="tst-content-frame">
           <div className="tst-content-box">
             <div className="container tst-p-60-60">
-              {/* <ScrollHint /> */}
+              <ScrollHint />
 
-              <div className="row">
+              <div className="row ">
                 <div className="col-lg-12">
                   {/* title */}
                   <div className="text-center">
-                    <div className="tst-suptitle tst-suptitle-center tst-mb-15" style={{marginTop: "30px"}}>
+                    <div
+                      className="tst-suptitle tst-suptitle-center tst-mb-15"
+                      style={{ marginTop: "30px" }}
+                    >
                       Newsletter
                     </div>
                     <h3 className="tst-mb-30">Latest publications</h3>

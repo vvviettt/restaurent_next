@@ -39,6 +39,7 @@ async function NewsBlog({ searchParams }) {
     title: item.attributes.title,
     content: item.attributes.desc,
     image: item.attributes.thumbnail.data.attributes.url,
+    slug: item.attributes.slug,
   }));
 
   return (
@@ -54,7 +55,10 @@ async function NewsBlog({ searchParams }) {
                 <div className="col-lg-12">
                   {/* title */}
                   <div className="text-center">
-                    <div className="tst-suptitle tst-suptitle-center tst-mb-15" style={{marginTop: "30px"}}>
+                    <div
+                      className="tst-suptitle tst-suptitle-center tst-mb-15"
+                      style={{ marginTop: "30px" }}
+                    >
                       Newsletter
                     </div>
                     <h3 className="tst-mb-30">Latest publications</h3>

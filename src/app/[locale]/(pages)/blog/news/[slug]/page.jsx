@@ -32,9 +32,9 @@ async function PostsDetail({ params }) {
   }
 
   let singlePostData = {
-    title: postData.attributes?.title || "Không có tiêu đề",
-    date: postData.attributes?.createdAt || "Không có ngày tạo",
-    content: postData.attributes?.content || "Không có nội dung",
+    title: postData.attributes?.title,
+    date: postData.attributes?.createdAt,
+    content: postData.attributes?.content,
     image: postData.attributes?.thumbnail?.data?.attributes?.url || "",
   };
 
