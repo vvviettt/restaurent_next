@@ -103,10 +103,10 @@ async function getFoodBlogs(locale) {
   const dataFoodFive = await strapiApiRequest(
     `food-blog?locale=${locale}&populate[0]=title&populate[1]=thumbnail&populate[2]=content&pagination[pageSize]=4`,
     undefined,
-    undefined,
-    {
-      next: { revalidate: 60 * 10 },
-    }
+    undefined
+    // {
+    //   next: { revalidate: 60 * 10 },
+    // }
   );
 
   return dataFoodFive;
@@ -116,10 +116,10 @@ async function getNewsBlogs(locale) {
   const dataNewsFive = await strapiApiRequest(
     `news-blogs?locale=${locale}&populate[0]=title&populate[1]=thumbnail&populate[2]=content&pagination[pageSize]=3&sort[0]=createdAt:desc`,
     undefined,
-    undefined,
-    {
-      next: { revalidate: 60 * 10 },
-    }
+    undefined
+    // {
+    //   next: { revalidate: 60 * 10 },
+    // }
   );
 
   return dataNewsFive;
@@ -129,10 +129,10 @@ async function getContentData(locale) {
   const homeData = await strapiApiRequest(
     `home?locale=${locale}&populate[0]=about&populate[1]=about.social_media_links&populate[2]=about.social_media_links.icon&populate[3]=outstanding&populate[4]=outstanding.items&populate[5]=outstanding.items.icon&populate[6]=news_blog&populate[7]=food_blogs&populate[8]=open_time&populate[9]=open_time.buttons&populate[10]=banner&populate[11]=banner.image`,
     undefined,
-    undefined,
-    {
-      next: { revalidate: 60 * 10 },
-    }
+    undefined
+    // {
+    //   next: { revalidate: 60 * 10 },
+    // }
   );
 
   return homeData;

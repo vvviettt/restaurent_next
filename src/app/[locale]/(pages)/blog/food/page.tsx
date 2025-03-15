@@ -103,12 +103,12 @@ async function getContentData(locale, page = 1, size) {
   let foodBlogData = await strapiApiRequest(
     `food-blog?locale=${locale}&populate[0]=title&populate[1]=thumbnail&populate[2]=content&pagination[page]=${page}&pagination[pageSize]=${size}`,
     undefined,
-    undefined,
-    {
-      next: {
-        revalidate: 60 * 10,
-      },
-    }
+    undefined
+    // {
+    //   next: {
+    //     revalidate: 60 * 10,
+    //   },
+    // }
   );
 
   return foodBlogData;
