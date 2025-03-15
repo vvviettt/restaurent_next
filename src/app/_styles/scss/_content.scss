@@ -787,6 +787,14 @@ blog
   & .tst-post-author {
     display: flex;
     align-items: center;
+    text-align: center;
+    width: 100%;
+
+    & h5 {
+      text-align: center;
+      width: 100%;
+      color: grey;
+    }
 
     & img {
       margin-right: 15px;

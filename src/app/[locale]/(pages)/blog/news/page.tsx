@@ -43,6 +43,7 @@ async function NewsBlog({ searchParams }) {
 
   return (
     <>
+    <div style={{height: "150px"}}></div>
       <div id="tst-dynamic-content" className="tst-dynamic-content">
         <div className="tst-content-frame">
           <div className="tst-content-box">

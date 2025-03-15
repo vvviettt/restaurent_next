@@ -39,29 +39,21 @@ async function PostsDetail({ params }) {
 
   return (
     <>
-      <div id="tst-dynamic-banner" className="tst-dynamic-banner">
-        <PageBanner
-          pageTitle={singlePostData.title}
-          // description={singlePostData.content}
-          breadTitle={0}
-        />
-      </div>
+       <div style={{height: "120px"}}></div>
       <div id="tst-dynamic-content" className="tst-dynamic-content">
         <div className="tst-content-frame">
           <div className="tst-content-box">
             <div className="container tst-p-60-60">
-              <ScrollHint />
-
+              {/* <ScrollHint /> */}
               <div className="row justify-content-center">
                 <div className="col-lg-8">
                   <div className="tst-post-bottom tst-mb-30">
                     <div className="tst-post-author">
+                      <h5>{singlePostData.title}</h5>
                       {/* <img src={authorData.avatar} alt={postData.author} /> */}
                       {/* <h6>{singlePostData.title}</h6> */}
                     </div>
-                    <div className="tst-date">
-                      {/* <Date dateString={singlePostData.date} /> */}
-                    </div>
+
                   </div>
 
                   <div className="tst-about-cover tst-video-cover tst-mb-60">

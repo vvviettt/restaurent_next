@@ -82,10 +82,6 @@ const MenuFiltered = ({ heading = 0, categories }) => {
           )}
         </div>
 
-        <div className="col-lg-12">
-          <div className="tst-spacer tst-spacer-only-bottom-space"></div>
-        </div>
-
         <div className="col-lg-12 d-flex flex-column tst-gap-30 tst-mb-60">
           {categories.map((category, category_key) => {
             return (

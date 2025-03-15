@@ -32,21 +32,13 @@ const MenuPage = async ({}) => {
 
   return (
     <>
-      <div id="tst-dynamic-banner" className="tst-dynamic-banner">
-        <PageBanner
-          pageTitle={"Discover Our menu"}
-          description={
-            "Quaerat debitis, vel, sapiente dicta sequi <br>labore porro pariatur harum expedita."
-          }
-          breadTitle={"Menu"}
-        />
-      </div>
+      <div style={{height: "120px"}}></div>
 
       <div id="tst-dynamic-content" className="tst-dynamic-content">
         <div className="tst-content-frame">
           <div className="tst-content-box">
-            <div className="container tst-p-60-0">
-              <ScrollHint />
+            <div className="container pt-5">
+              {/* <ScrollHint /> */}
 
               <MenuFiltered categories={menu?.data ?? []} />
             </div>

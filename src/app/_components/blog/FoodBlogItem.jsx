@@ -12,7 +12,7 @@ function FoodBlogItem({ item }) {
             alt="Món ăn"
           />
         </div>
-        <div className="my-4">
+        <div className="my-4" style={{color: "grey"}}>
           <h5 className="text-center">{item.name}</h5>
         </div>
       </div>

@@ -26,7 +26,7 @@ const FoodBlogs = ({ posts, data }) => {
                   alt="Món ăn"
                 />
               </div>
-              <div className="my-4">
+              <div className="my-4" style={{color: "grey"}}>
                 <h5>{item.name}</h5>
               </div>
             </div>

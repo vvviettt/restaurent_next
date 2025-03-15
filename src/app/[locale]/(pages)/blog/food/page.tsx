@@ -44,6 +44,7 @@ async function FoodBlog({ searchParams }) {
   return (
     <>
       <div id="tst-dynamic-banner" className="tst-dynamic-banner">
+        <div style={{height: "150px"}}></div>
       </div>
       <div id="tst-dynamic-content" className="tst-dynamic-content">
         <div className="tst-content-frame">
@@ -69,7 +70,7 @@ async function FoodBlog({ searchParams }) {
                 </div>
               </div>
 
-              <FoodBlogs posts={foodBlogData} />
+              <FoodBlogs posts={foodBlogData.reverse()} />
               {totalPage > 1 && (
                 <Pagination
                   currentPage={
