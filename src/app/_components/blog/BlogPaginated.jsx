@@ -12,7 +12,7 @@ const PaginatedBlogPosts = ({ items, columns }) => {
   }
 
   return (
-    <div className="row">
+    <div className="row tst-feature-box  pt-4">
       {items.map((item, key) => (
         <div className={`${columnsClass}`} key={`blog-post-${key}`}>
           <BlogItem item={item} />
