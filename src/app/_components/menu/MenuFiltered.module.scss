@@ -28,6 +28,7 @@
     width: auto;
     border: 2px solid rgba(26, 47, 51, 0.7) !important;
     display: block !important;
+    white-space: nowrap;
 
     &:hover {
       border: none !important;
