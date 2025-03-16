@@ -1,8 +1,13 @@
 "use client";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 import { Formik } from "formik";
+import { useState } from "react";
 
 const ReservationForm = ({ data }) => {
+  const [startDate, setStartDate] = useState();
+
   return (
     <>
       {/* contact form */}
@@ -130,17 +135,14 @@ const ReservationForm = ({ data }) => {
                 </select>
               </div>
               <div className="col-6 col-md-4 d-flex">
-                <input
-                  type="date"
+                <DatePicker
+                  selected={startDate}
+                  required
                   name="date"
+                  onChange={(date) => setStartDate(date)}
+                  placeholderText={data.date_lable}
                   className="flex-1"
-                  required="required"
-                  onChange={handleChange}
-                  placeholder={data.data_lable}
-                  onfocus="(this.type='date')"
-                  onblur="(this.type='text')"
-                  onBlur={handleBlur}
-                  value={values.date}
+                  wrapperClassName="flex-1"
                 />
               </div>
               <div className="col-6 col-md-4">

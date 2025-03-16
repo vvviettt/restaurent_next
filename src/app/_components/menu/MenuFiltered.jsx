@@ -15,6 +15,14 @@ const MenuFiltered = ({ heading = 0, categories }) => {
   const observerRef = useRef(null);
 
   useEffect(() => {
+    document.querySelector("body").classList.remove("home-body");
+
+    return () => {
+      document.querySelector("body").classList.add("home-body");
+    };
+  }, []);
+
+  useEffect(() => {
     observerRef.current = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

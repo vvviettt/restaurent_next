@@ -33,6 +33,8 @@ import AppData from "@data/app.json";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
+import classNames from "classnames";
+import { headers } from "next/headers";
 
 export const metadata = {
   title: {
@@ -53,10 +55,13 @@ const Layouts = async ({ children, params }) => {
   return (
     <html
       lang={locale}
-      className={`${josefin_sans.variable} ${playfair_display.variable}`}
+      className={classNames(
+        `${josefin_sans.variable} ${playfair_display.variable}`
+      )}
     >
       <body
         style={{ backgroundImage: "url(" + AppData.settings.bgImage + ")" }}
+        className={classNames("home-body")}
       >
         <div className="tst-main-overlay"></div>
         {/* app wrapper */}

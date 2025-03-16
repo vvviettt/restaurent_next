@@ -17,7 +17,13 @@ const BlogItem = ({ item, popular }) => {
           />
         </Link>
         <div className="tst-descr">
-          <h5 className="tst-mb-15">
+          <h5
+            className="tst-mb-15"
+            style={{
+              lineHeight: "28px",
+              height: "56px",
+            }}
+          >
             <a
               href={`/blog/news/${item.slug}`}
               className="tst-anima-link"

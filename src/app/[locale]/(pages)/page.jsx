@@ -101,7 +101,7 @@ async function getAllPosts() {
 
 async function getFoodBlogs(locale) {
   const dataFoodFive = await strapiApiRequest(
-    `food-blog?locale=${locale}&populate[0]=title&populate[1]=thumbnail&populate[2]=content&pagination[pageSize]=4`,
+    `food-blog?locale=${locale}&populate[0]=title&populate[1]=thumbnail&populate[2]=content`,
     undefined,
     undefined
     // {
@@ -114,7 +114,7 @@ async function getFoodBlogs(locale) {
 
 async function getNewsBlogs(locale) {
   const dataNewsFive = await strapiApiRequest(
-    `news-blogs?locale=${locale}&populate[0]=title&populate[1]=thumbnail&populate[2]=content&pagination[pageSize]=3&sort[0]=createdAt:desc`,
+    `news-blogs?locale=${locale}&populate[0]=title&populate[1]=thumbnail&populate[2]=content&sort[0]=createdAt:desc`,
     undefined,
     undefined
     // {

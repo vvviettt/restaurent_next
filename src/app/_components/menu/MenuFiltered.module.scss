@@ -6,6 +6,13 @@
   position: sticky;
   position: -webkit-sticky;
   top: 110px;
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   .button {
     opacity: 1;
@@ -30,6 +37,7 @@
     display: block !important;
     white-space: nowrap;
 
+
     &:hover {
       border: none !important;
       color: #1a2f33 !important;
@@ -43,13 +51,4 @@
     }
   }
 
-  @media (max-width: 799px) {
-    width: 100%;
-    overflow: scroll;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
-
-  }
 }
