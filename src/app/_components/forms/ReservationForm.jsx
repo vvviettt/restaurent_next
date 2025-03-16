@@ -137,6 +137,8 @@ const ReservationForm = ({ data }) => {
                   required="required"
                   onChange={handleChange}
                   placeholder={data.data_lable}
+                  onfocus="(this.type='date')"
+                  onblur="(this.type='text')"
                   onBlur={handleBlur}
                   value={values.date}
                 />
