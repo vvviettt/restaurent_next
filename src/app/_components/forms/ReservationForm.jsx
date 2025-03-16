@@ -129,10 +129,11 @@ const ReservationForm = ({ data }) => {
                   <option value="5">6 or more</option>
                 </select>
               </div>
-              <div className="col-6 col-md-4">
+              <div className="col-6 col-md-4 d-flex">
                 <input
                   type="date"
                   name="date"
+                  className="flex-1"
                   required="required"
                   onChange={handleChange}
                   placeholder={data.data_lable}

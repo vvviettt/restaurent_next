@@ -57,7 +57,7 @@ async function FoodBlog({ searchParams }) {
                       {pageData?.data?.attributes?.title}
                     </h3>
                     <p
-                      className="tst-text tst-mb-60"
+                      className="tst-text tst-mb-60 "
                       dangerouslySetInnerHTML={{
                         __html: pageData?.data?.attributes?.desc,
                       }}
